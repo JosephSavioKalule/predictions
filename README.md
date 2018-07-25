@@ -1,24 +1,21 @@
+## Predictions
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+Welcome to the almighty Predictions app!
 
+### Introduction
+There's probably lots of prediction apps out there already, but here's one more.
 
-Welcome to your Rails project on Cloud9 IDE!
+### Purpose
+The sole purpose of this app is to satisfy all you prediction gurus out there,
+while simultaneously providing me with a digital playground.
 
-To get started, just do the following:
+### Development
+The environment is Rails 5/Ruby 2. Cool, right?
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://HOSTNAME/).
-
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+#### Models
+This list is likely to evolve with time:
+* users
+* teams
+* leagues
+* matches
+* predictions
