@@ -1,0 +1,14 @@
+<header class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
+  <div class="container">
+    <%= link_to "Predictions", root_path, id: "logo", class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <nav class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home",   root_path, class: "nav-link" %></li>
+        <li><%= link_to "Help",   help_path, class: "nav-link" %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
