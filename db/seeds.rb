@@ -5,3 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+if Rails.env.development?
+  User.create!(name:  "Example User",
+               email: "example@example.com",
+               password:              "foobar",
+               password_confirmation: "foobar",
+               admin: true)
+  
+  99.times do |n|
+    name  = Faker::Name.name
+    email = "example-#{n+1}@railstutorial.org"
+    password = "password"
+    User.create!(name:  name,
+                 email: email,
+                 password:              password,
+                 password_confirmation: password)
+  end
+end
+
+if Rails.env.production?
+  # seed production data here
+end
