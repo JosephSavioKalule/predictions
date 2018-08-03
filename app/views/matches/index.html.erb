@@ -1,0 +1,17 @@
+<% provide(:title, 'Matches') %>
+
+<h1>Matches</h1>
+
+<div class="row">
+<% @matches.each do |match| %>
+<div class="col-md-4">
+  <div class="card" style="margin-bottom:24px">
+    <div class="card-body">
+      <p><%= match.home_team.name %> vs <%= match.away_team.name %></p>
+      <p><%= match.match_date_time %></p>
+      <p><%= match.league.name %></p>
+    </div>
+  </div>
+</div>
+<% end %>
+</div>

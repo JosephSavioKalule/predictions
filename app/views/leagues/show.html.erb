@@ -1,0 +1,21 @@
+<% provide(:title, @league.name) %>
+
+<h1><%= @league.name %></h1>
+
+<p>Country: <%= @league.country.name %></p>
+
+<h3>Matches:</h3>
+
+<ul>
+  <% @matches.each do |m| %>
+  <li><%= m.match_date_time %>  <%= m.home_team.name %> vs <%= m.away_team.name %></li>
+  <% end %>
+</ul>
+
+<h3>Teams:</h3>
+
+<ul>
+  <% @teams.each do |team| %>
+  <li><%= link_to team.name, team, class: 'btn btn-default' %></li>
+  <% end %>
+</ul>

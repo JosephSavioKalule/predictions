@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  league: one
+  home_team: one
+  away_team: one
+  match_date_time: 2018-08-03 09:25:18
+  home_goals: 1
+  away_goals: 1
+
+two:
+  league: two
+  home_team: two
+  away_team: two
+  match_date_time: 2018-08-03 09:25:18
+  home_goals: 1
+  away_goals: 1

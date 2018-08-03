@@ -1,0 +1,13 @@
+<% provide(:title, 'Seasons') %>
+
+<h1>Seasons</h1>
+
+<div class="card-deck">
+<% @seasons.each do |season| %>
+<div class="card">
+  <div class="card-body">
+    <%= "#{season.start_year} - #{season.start_year+1}" %>
+  </div>
+</div>
+<% end %>
+</div>

@@ -7,6 +7,8 @@
     <nav class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home",   root_path, class: "nav-link" %></li>
+        <li><%= link_to "Leagues",   leagues_path, class: "nav-link" %></li>
+        <li><%= link_to "Teams",   teams_path, class: "nav-link" %></li>
         <li><%= link_to "Help",   help_path, class: "nav-link" %></li>
         <% if logged_in? %>
           <li><%= link_to "Users", users_path, class: "nav-link" %></li>

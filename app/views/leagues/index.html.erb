@@ -1,0 +1,17 @@
+<% provide(:title, 'Leagues') %>
+
+<h1>Leagues</h1>
+
+<div class="card-deck">
+<% @leagues.each do |league| %>
+<div class="card">
+  <div class="card-body">
+    <p><%= league.name %></p>
+    <p><%= league.country.name %></p>
+  </div>
+  <div class="card-footer">
+    <%= link_to "Details", league_path(league) %>
+  </div>
+</div>
+<% end %>
+</div>

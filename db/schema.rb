@@ -10,7 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180802130323) do
+ActiveRecord::Schema.define(version: 20180803092518) do
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "leagues", force: :cascade do |t|
+    t.string "name"
+    t.integer "country_id"
+    t.integer "season_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_leagues_on_country_id"
+    t.index ["season_id"], name: "index_leagues_on_season_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "league_id"
+    t.integer "home_team_id"
+    t.integer "away_team_id"
+    t.datetime "match_date_time"
+    t.integer "home_goals"
+    t.integer "away_goals"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["away_team_id"], name: "index_matches_on_away_team_id"
+    t.index ["home_team_id"], name: "index_matches_on_home_team_id"
+    t.index ["league_id"], name: "index_matches_on_league_id"
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.integer "start_year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.integer "league_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["league_id"], name: "index_teams_on_league_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Premier League
+  country: one
+  season: one
+
+two:
+  name: La Liga
+  country: two
+  season: one

@@ -10,10 +10,19 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+  
+  get '/matches',    to: 'matches#index'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   get 'profile',     to: 'users#show'
+  
+  resources :seasons, only: [:index, :show]
+  resources :leagues, only: [:index, :show] do
+    resources :matches, only: [:index, :show]
+  end
+  resources :teams, only: [:index, :show]
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

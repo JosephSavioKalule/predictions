@@ -1,0 +1,12 @@
+<% provide(:title, "#{@match.home_team.name} vs #{@match.away_team.name}") %>
+
+<h1><%= "#{@match.home_team.name} vs #{@match.away_team.name}" %></h1>
+
+<p>Kick off: <%= @match.match_date_time %></p>
+
+<p>
+  <% if DateTime.now < @match.match_date_time %>
+  Kick off in <%= ((@match.match_date_time - DateTime.now) / 1.day).round %> days
+  and <%= pluralize((((@match.match_date_time - DateTime.now) / 1.hour).round)%24, "hour") %>
+  <% end %>
+</p>
