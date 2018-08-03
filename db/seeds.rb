@@ -32,6 +32,8 @@ if Rails.env.production?
   # seed production data here
 end
 
+# both environments
+
 seasons = Season.create!([{ start_year: 2018 }, { start_year: 2019}])
 
 countries = Country.create!([{ name: 'England' }, { name: 'Spain' }, { name: 'France' }, { name: 'Italy' }])
@@ -65,7 +67,7 @@ teams = Team.create!([
   { name: 'Watford', league: leagues[0] },
   { name: 'West Ham United', league: leagues[0] },
   { name: 'Wolverhampton Wanderers', league: leagues[0] },
-  #La Liga:
+  # La Liga:
   { name: 'Deportivo Alaves', league: leagues[1] },
   { name: 'Athletic Bilbao', league: leagues[1] },
   { name: 'Atletico Madrid', league: leagues[1] },
@@ -85,5 +87,47 @@ teams = Team.create!([
   { name: 'Sevilla', league: leagues[1] },
   { name: 'Valencia', league: leagues[1] },
   { name: 'Real Valladolid', league: leagues[1] },
-  { name: 'Villarreal', league: leagues[1] }
+  { name: 'Villarreal', league: leagues[1] },
+  # Ligue 1:
+  { name: 'Amiens', league: leagues[2] },
+  { name: 'Angers', league: leagues[2] },
+  { name: 'Bordeaux', league: leagues[2] },
+  { name: 'Caen', league: leagues[2] },
+  { name: 'Dijon', league: leagues[2] },
+  { name: 'Guingamp', league: leagues[2] },
+  { name: 'Lille', league: leagues[2] },
+  { name: 'Lyon', league: leagues[2] },
+  { name: 'Marseille', league: leagues[2] },
+  { name: 'Monaco', league: leagues[2] },
+  { name: 'Montpellier', league: leagues[2] },
+  { name: 'Nantes', league: leagues[2] },
+  { name: 'Nice', league: leagues[2] },
+  { name: 'Nimes', league: leagues[2] },
+  { name: 'Paris Saint Germain', league: leagues[2] },
+  { name: 'Reims', league: leagues[2] },
+  { name: 'Rennes', league: leagues[2] },
+  { name: 'Saint-Etienne', league: leagues[2] },
+  { name: 'Strasbourg', league: leagues[2] },
+  { name: 'Toulouse', league: leagues[2] },
+  # Serie A:
+  { name: 'AC Milan', league: leagues[3] },
+  { name: 'Atalanta', league: leagues[3] },
+  { name: 'Bologna', league: leagues[3] },
+  { name: 'Cagliari', league: leagues[3] },
+  { name: 'Chievo Verona', league: leagues[3] },
+  { name: 'Empoli', league: leagues[3] },
+  { name: 'Fiorentina', league: leagues[3] },
+  { name: 'Frosinone', league: leagues[3] },
+  { name: 'Genoa', league: leagues[3] },
+  { name: 'Inter', league: leagues[3] },
+  { name: 'Juventus', league: leagues[3] },
+  { name: 'S.S. Lazio', league: leagues[3] },
+  { name: 'Roma', league: leagues[3] },
+  { name: 'Sampdoria', league: leagues[3] },
+  { name: 'Sassuolo', league: leagues[3] },
+  { name: 'SPAL 2013', league: leagues[3] },
+  { name: 'SSC Napoli', league: leagues[3] },
+  { name: 'Torino', league: leagues[3] },
+  { name: 'Udinese', league: leagues[3] },
+  { name: 'Parma Calcio 1913', league: leagues[3] }
   ])
