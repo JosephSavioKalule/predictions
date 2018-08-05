@@ -2,7 +2,8 @@ class MatchesController < ApplicationController
   before_action :find_match, only: :show
   
   def index
-    @matches = Match.all
+    @league = League.find(params[:league_id])
+    @matches = @league.matches
   end
   
   def show
