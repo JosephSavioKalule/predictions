@@ -48,46 +48,46 @@ leagues = League.create!([
 teams = Team.create!([
   # Premier league:
   { name: 'AFC Bournemouth', league: leagues[0] },
-  { name: 'Arsenal', league: leagues[0] },
+  { name: 'Arsenal', league: leagues[0] },                 # 2
   { name: 'Brighton & Hove Albion', league: leagues[0] },
-  { name: 'Burnley', league: leagues[0] },
+  { name: 'Burnley', league: leagues[0] },                 # 4
   { name: 'Cardiff City', league: leagues[0] },
-  { name: 'Chelsea', league: leagues[0] },
+  { name: 'Chelsea', league: leagues[0] },                 # 6
   { name: 'Crystal Palace', league: leagues[0] },
-  { name: 'Everton', league: leagues[0] },
+  { name: 'Everton', league: leagues[0] },                 # 8
   { name: 'Fulham', league: leagues[0] },
-  { name: 'Huddersfield Town', league: leagues[0] },
+  { name: 'Huddersfield Town', league: leagues[0] },       # 10
   { name: 'Leicester City', league: leagues[0] },
   { name: 'Liverpool', league: leagues[0] },
   { name: 'Manchester City', league: leagues[0] },
   { name: 'Manchester United', league: leagues[0] },
   { name: 'Newcastle United', league: leagues[0] },
-  { name: 'Southampton', league: leagues[0] },
+  { name: 'Southampton', league: leagues[0] },             # 16
   { name: 'Tottenham Hotspur', league: leagues[0] },
-  { name: 'Watford', league: leagues[0] },
+  { name: 'Watford', league: leagues[0] },                 # 18
   { name: 'West Ham United', league: leagues[0] },
   { name: 'Wolverhampton Wanderers', league: leagues[0] },
   # La Liga:
   { name: 'Deportivo Alaves', league: leagues[1] },
-  { name: 'Athletic Bilbao', league: leagues[1] },
+  { name: 'Athletic Bilbao', league: leagues[1] },         # 22
   { name: 'Atletico Madrid', league: leagues[1] },
-  { name: 'Barcelona', league: leagues[1] },
+  { name: 'Barcelona', league: leagues[1] },               # 24
   { name: 'Celta Vigo', league: leagues[1] },
-  { name: 'Eibar', league: leagues[1] },
+  { name: 'Eibar', league: leagues[1] },                   # 26
   { name: 'Espanyol', league: leagues[1] },
-  { name: 'Getafe', league: leagues[1] },
+  { name: 'Getafe', league: leagues[1] },                  # 28
   { name: 'Girona', league: leagues[1] },
   { name: 'SD Huesca', league: leagues[1] },
   { name: 'Leganes', league: leagues[1] },
-  { name: 'Levante', league: leagues[1] },
+  { name: 'Levante', league: leagues[1] },                 # 32
   { name: 'Rayo Vallecano', league: leagues[1] },
   { name: 'Real Betis', league: leagues[1] },
   { name: 'Real Madrid', league: leagues[1] },
-  { name: 'Real Sociedad', league: leagues[1] },
+  { name: 'Real Sociedad', league: leagues[1] },           # 36
   { name: 'Sevilla', league: leagues[1] },
   { name: 'Valencia', league: leagues[1] },
   { name: 'Real Valladolid', league: leagues[1] },
-  { name: 'Villarreal', league: leagues[1] },
+  { name: 'Villarreal', league: leagues[1] },              # 34
   # Ligue 1:
   { name: 'Amiens', league: leagues[2] },
   { name: 'Angers', league: leagues[2] },
