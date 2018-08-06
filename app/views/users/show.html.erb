@@ -1,3 +1,5 @@
+<% provide(:title, @user.name) %>
+
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -6,8 +8,20 @@
         <%= @user.name %>
       </h1>
     </section>
+    <% if current_user?(@user) %>
     <section>
-      <%= link_to "Edit", edit_user_path(current_user), class: "btn btn-outline-dark" %>
+      <%= link_to "Edit", edit_user_path(current_user), class: "btn btn-outline-dark" %> <br>
+      <%= link_to "My Predictions", user_predictions_path(current_user) %>
     </section>
+    <% end %>
   </aside>
+  
+  <div class="col-md-8">
+    <h4><%= current_user?(@user) ? "My" : "#{@user.name}'s" %> Predictions</h4>
+    <ul>
+      <% @predictions.each do |p| %>
+      <li><%= p.match.home_team.name %> vs <%= p.match.away_team.name %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>

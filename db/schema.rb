@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180804100445) do
+ActiveRecord::Schema.define(version: 20180805121652) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -40,6 +40,18 @@ ActiveRecord::Schema.define(version: 20180804100445) do
     t.index ["away_team_id"], name: "index_matches_on_away_team_id"
     t.index ["home_team_id"], name: "index_matches_on_home_team_id"
     t.index ["league_id"], name: "index_matches_on_league_id"
+  end
+
+  create_table "predictions", force: :cascade do |t|
+    t.integer "home_goals"
+    t.integer "away_goals"
+    t.integer "match_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_predictions_on_match_id"
+    t.index ["user_id", "created_at"], name: "index_predictions_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_predictions_on_user_id"
   end
 
   create_table "seasons", force: :cascade do |t|

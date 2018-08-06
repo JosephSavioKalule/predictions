@@ -19,3 +19,6 @@ This list is likely to evolve with time:
 * leagues
 * matches
 * predictions
+
+### Deployment
+The app is already live on Heroku at [soccer-predictions](https://www.soccer-predictions.herokuapp.com)

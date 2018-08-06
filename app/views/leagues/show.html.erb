@@ -12,10 +12,12 @@
   <% end %>
 </ul>
 
+<p><%= link_to 'All matches', league_matches_path(@league) %></p>
+
 <h3>Teams:</h3>
 
 <ul>
   <% @teams.each do |team| %>
-  <li><%= link_to team.name, team, class: 'btn btn-default' %></li>
+  <li><%= link_to team.name, team %></li>
   <% end %>
 </ul>

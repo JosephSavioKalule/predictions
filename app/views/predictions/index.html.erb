@@ -1,0 +1,24 @@
+<% provide(:title, "#{@user.name}'s Predictions") %>
+
+<h1>Predictions</h1>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <% @predictions.each do |p| %>
+      <div>
+        <h3>Match:</h3>
+        <%= "#{p.match.home_team.name} vs #{p.match.away_team.name}" %>
+      </div>
+      <div>
+        <h3><%= link_to 'Prediction:', user_prediction_path(@user, p) %></h3>
+        <%= "#{p.match.home_team.name} #{p.home_goals} - #{p.away_goals} #{p.match.away_team.name}" %>
+      </div>
+      <% if p.match.home_goals %>
+      <div>
+        <h3>Match result:</h3>
+        <%= "#{p.match.home_team.name} #{p.match.home_goals} - #{p.match.away_goals} #{p.match.away_team.name}" %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

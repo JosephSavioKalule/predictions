@@ -4,7 +4,15 @@
 
 <div class="row">
   <div class="col col-md-4 offset-md-4">
-    <p>League: <%= @team.league.name %> <span><%= link_to 'Details', @team.league %></span></p>
+    <p>League: <%= @team.league.name %> <span class="end"><%= link_to 'Details', @team.league %></span></p>
     <p>Country: <%= @team.league.country.name %></p>
+    <h4><%= @team.name %>'s matches</h4>
+    <ul>
+      <% @matches.each do |m| %>
+      <li>
+        <%= m.home_team.name %> <%= m.home_goals.nil? ? "vs" : "#{m.home_goals} - #{m.away_goals}" %> <%= m.away_team.name %>
+      </li>
+      <% end %>
+    </ul>
   </div>
 </div>

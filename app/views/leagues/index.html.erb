@@ -2,15 +2,18 @@
 
 <h1>Leagues</h1>
 
-<div class="card-deck">
+<div class="row">
 <% @leagues.each do |league| %>
-<div class="card">
-  <div class="card-body">
-    <p><%= league.name %></p>
-    <p><%= league.country.name %></p>
-  </div>
-  <div class="card-footer">
-    <%= link_to "Details", league_path(league) %>
+<div class="col-md-3 col-sm-6">
+  <div class="card" style="margin-bottom:24px">
+    <div class="card-body">
+      <p><%= league.name %></p>
+      <p><%= league.country.name %></p>
+    </div>
+    <div class="card-footer">
+      <%= link_to "Details", league_path(league) %>
+      <%= link_to "Matches", league_matches_path(league), class:"end" %>
+    </div>
   </div>
 </div>
 <% end %>

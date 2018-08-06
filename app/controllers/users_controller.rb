@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
   
   def index
-    #@users = User.paginate(page: params[:page])
     @users = User.where(activated: true).paginate(page: params[:page])
   end
   
@@ -15,6 +14,7 @@ class UsersController < ApplicationController
     else
       @user = current_user
     end
+    @predictions = Prediction.where("user_id=?", @user.id).limit(5)
   end
   
   def new

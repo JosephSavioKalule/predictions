@@ -1,0 +1,12 @@
+
+one:
+  home_goals: 1
+  away_goals: 2
+  match: 
+  user: one
+
+two:
+  home_goals: 1
+  away_goals: 2
+  match: 
+  user: two

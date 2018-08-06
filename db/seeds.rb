@@ -26,6 +26,7 @@ if Rails.env.development?
                  activated: true,
                  activated_at: Time.zone.now)
   end
+  
 end
 
 if Rails.env.production?

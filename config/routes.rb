@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-
-  # You can have the root of your site routed with "root"
+  
   root 'static_pages#home'
+  
+  get 'predictions_controller/index'
+
+  get 'predictions_controller/show'
   
   get '/help', to: 'static_pages#help'
   
@@ -12,7 +15,9 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   
   get '/matches',    to: 'matches#index'
-  resources :users
+  resources :users do
+    resources :predictions
+  end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   get 'profile',     to: 'users#show'
@@ -27,14 +32,8 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
 
   # Example resource route with options:
   #   resources :products do
