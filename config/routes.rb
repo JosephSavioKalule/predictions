@@ -2,10 +2,6 @@ Rails.application.routes.draw do
   
   root 'static_pages#home'
   
-  get 'predictions_controller/index'
-
-  get 'predictions_controller/show'
-  
   get '/help', to: 'static_pages#help'
   
   get  '/signup',    to: 'users#new'
@@ -24,7 +20,9 @@ Rails.application.routes.draw do
   
   resources :seasons, only: [:index, :show]
   resources :leagues, only: [:index, :show] do
-    resources :matches, only: [:index, :show]
+    resources :matches, only: [:index, :show] do
+      resources :predictions
+    end
   end
   resources :teams, only: [:index, :show]
   

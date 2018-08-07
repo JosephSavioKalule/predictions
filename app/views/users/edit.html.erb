@@ -1,10 +1,14 @@
-<% provide(:title, "Edit user") %>
+<% provide(:title, "Update your Profile") %>
 <h1>Update your profile</h1>
 
 <div class="row">
   <div class="col-md-6 offset-md-3">
     
     <%= render 'form' %>
+    
+    <div>
+      <%= link_to "Cancel", profile_path, class: "btn btn-outline-secondary" %>
+    </div>
 
     <div class="gravatar_edit">
       <%= gravatar_for @user %>

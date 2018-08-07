@@ -34,6 +34,18 @@ textarea {
   float: right;
 }
 
+table {
+  .home {
+    text-align: right;
+  }
+  .away {
+    text-align: left;
+  }
+  .score {
+    text-align: center;
+  }
+}
+
 
 /* typography */
 
@@ -184,6 +196,10 @@ input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+.col-form-label {
+  text-align: right;
 }
 
 

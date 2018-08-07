@@ -1,0 +1,40 @@
+<% provide(:title, "New Prediction") %>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h3>New Prediction</h3>
+    
+    <%= form_for(@prediction, url: league_match_predictions_path) do |f| %>
+      <% if @prediction.errors.any? %>
+        <div id="error_explanation">
+          <div class="alert alert-danger">
+            The form contains <%= pluralize(@prediction.errors.count, "error") %>.
+          </div>
+          <ul>
+          <% @prediction.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      
+      <div class="form-group row">
+        <%= f.label @match.home_team.name, class: 'col-8 col-form-label' %>
+        <div class="col-4">
+          <%= f.select :home_goals, options_for_select((0..10).step(1)) %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label @match.away_team.name, class: 'col-8 col-form-label' %>
+        <div class="col-4">
+          <%= f.select :away_goals, options_for_select((0..10).step(1)) %>
+        </div>
+      </div>
+
+      <%= f.submit "Save changes", class: "btn btn-outline-success" %>
+      
+    <% end %>
+  </div>
+</div>

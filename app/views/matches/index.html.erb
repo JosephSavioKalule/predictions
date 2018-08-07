@@ -3,18 +3,20 @@
 <h1><%= @league.name %> Matches</h1>
 
 <div class="row">
-<% @matches.each do |match| %>
-<div class="col-md-6 offset-md-3">
-  <div class="card" style="margin-bottom:24px">
-    <div class="card-body">
-      <p>
-        <%= link_to league_match_path(@league,match) do %>
-        <%= match.home_team.name %> vs <%= match.away_team.name %>
-        <% end %>
-      </p>
-      <p><%= match.match_date_time.strftime("%m/%d/%Y at %I:%M%p (%Z)") %></p>
-    </div>
+  <div class="col-md-6 offset-md-3">
+    <table class="table table-sm table-dark">
+      <% @matches.each do |match| %>
+        <tr>
+          <td class="home"><%= match.home_team.name %></td>
+          <td class="score">
+            <%= link_to league_match_path(@league,match) do %>
+            <%= match.home_goals.nil? ? "?" : match.home_goals %> - <%= match.away_goals.nil? ? "?" : match.away_goals %>
+            <% end %>
+            <br><%= match.match_date_time.strftime("%m/%d/%Y at %I:%M%p (%Z)") %>
+          </td>
+          <td class="away"><%= match.away_team.name %></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
-</div>
-<% end %>
 </div>

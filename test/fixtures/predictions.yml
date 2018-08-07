@@ -2,11 +2,23 @@
 one:
   home_goals: 1
   away_goals: 2
-  match: 
-  user: one
+  match: two
+  user: simon
 
 two:
   home_goals: 1
   away_goals: 2
-  match: 
-  user: two
+  match: two
+  user: lana
+
+three:
+  home_goals: 1
+  away_goals: 2
+  match: one
+  user: simon
+  
+four:
+  home_goals: 1
+  away_goals: 0
+  match: three
+  user: lana

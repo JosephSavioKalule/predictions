@@ -10,7 +10,8 @@
     </section>
     <% if current_user?(@user) %>
     <section>
-      <%= link_to "Edit", edit_user_path(current_user), class: "btn btn-outline-dark" %> <br>
+      <h5>Actions</h5>
+      <%= link_to "Edit", edit_user_path(current_user) %> <br>
       <%= link_to "My Predictions", user_predictions_path(current_user) %>
     </section>
     <% end %>

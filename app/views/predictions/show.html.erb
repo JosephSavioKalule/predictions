@@ -3,11 +3,11 @@
 <div class="row">
   <div class="col-md-6 offset-md-3">
     <div>
-      <h3>Match:</h3>
+      <h4>Match:</h4>
       <%= "#{@match.home_team.name} vs #{@match.away_team.name}" %>
     </div>
     <div>
-      <h3>Prediction:</h3>
+      <h4>Prediction:</h4>
       <%= "#{@match.home_team.name} #{@prediction.home_goals} - #{@prediction.away_goals} #{@match.away_team.name}" %>
     </div>
     <% if @match.home_goals %>
@@ -16,6 +16,12 @@
         <%= "#{@match.home_team.name} #{@match.home_goals} - #{@match.away_goals} #{@match.away_team.name}" %>
       </div>
     <% end %>
+    <p>
+      <%= link_to 'Modify', edit_user_prediction_path(@user, @prediction),
+                  class: 'btn btn-outline-primary' %> |
+      <%= link_to 'Delete', user_prediction_path(@user, @prediction),
+                  method: :delete, class: 'btn btn-outline-danger' %>
+    </p>
     <hr>
     <p><%= link_to 'All predictions', user_predictions_path(@prediction.user), class: 'btn btn-outline-dark' %></p>
     

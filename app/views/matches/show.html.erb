@@ -1,17 +1,44 @@
 <% provide(:title, "#{@match.home_team.name} vs #{@match.away_team.name}") %>
 
-<h1><%= "#{@match.home_team.name} vs #{@match.away_team.name}" %></h1>
-<% if @match.home_goals && @match.away_goals %>
-<h2><%= "#{@match.home_goals} - #{@match.away_goals}" %></h2>
-<% end %>
-
-<p>Kick off: <%= @match.match_date_time.strftime("%m/%d/%Y at %I:%M%p (%Z)") %></p>
-
-<% if DateTime.now < @match.match_date_time %>
-<p>
-  Kick off in <%= pluralize(((@match.match_date_time - DateTime.now) / 1.day).round, "day") %>
-  and <%= pluralize((((@match.match_date_time - DateTime.now) / 1.hour).round)%24, "hour") %>
-</p>
-<% end %>
-
-<%= link_to 'Back', league_matches_path(@match.league), class:'btn btn-outline-dark' %>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h3><%= "#{@match.home_team.name} vs #{@match.away_team.name}" %></h3>
+    <% if @match.home_goals && @match.away_goals %>
+      <h2><%= "#{@match.home_goals} - #{@match.away_goals}" %></h2>
+    <% end %>
+    
+    <p>Kick off: <%= @match.match_date_time.strftime("%m/%d/%Y at %I:%M%p (%Z)") %></p>
+    
+    <% if DateTime.now < @match.match_date_time %>
+    <p>
+      Kick off in <%= pluralize(((@match.match_date_time - DateTime.now) / 1.day).round, "day") %>
+      and <%= pluralize((((@match.match_date_time - DateTime.now) / 1.hour).round)%24, "hour") %>
+    </p>
+    <% end %>
+    
+    <div>
+      <% if !@prediction.nil? %>
+        <h5>My prediction</h5>
+        <p>
+          <%= "#{@match.home_team.name} #{@prediction.home_goals} - #{@prediction.away_goals} #{@match.away_team.name}" %>
+          <% if @match.match_date_time > 1.hour.from_now %>
+            <%= link_to "Edit", edit_user_prediction_path(current_user, @prediction),
+                        class: "btn btn-sm btn-outline-primary" %> |
+            <%= link_to "Delete", user_prediction_path(current_user, @prediction), method: :delete,
+                        class: "btn btn-sm btn-outline-danger", data: { confirm: "You sure?" } %>
+          <% end %>
+        </p>
+      <% else %>
+        <% if logged_in? %>
+        <p>
+          <% if @match.match_date_time > 1.hour.from_now %>
+          <%= link_to 'Predict', new_league_match_prediction_path(@match.league,@match), class:"btn btn-outline-primary" %>
+          <% end %>
+        </p>
+        <% end %>
+      <% end %>
+    </div>
+    
+    <%= link_to "#{@match.league.name} matches", league_matches_path(@match.league), class:'btn btn-outline-dark' %>
+  </div>
+</div>

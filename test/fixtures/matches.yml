@@ -3,15 +3,19 @@
 one:
   league: one
   home_team: one
-  away_team: one
-  match_date_time: 2018-08-03 09:25:18
+  away_team: two
+  match_date_time: <%= Time.now - 2.hours %>
   home_goals: 1
-  away_goals: 1
+  away_goals: 0
 
 two:
-  league: two
+  league: one
   home_team: two
-  away_team: two
-  match_date_time: 2018-08-03 09:25:18
-  home_goals: 1
-  away_goals: 1
+  away_team: one
+  match_date_time: <%= Time.now + 2.hours %>
+
+three:
+  league: one
+  home_team: two
+  away_team: one
+  match_date_time: <%= Time.now + 50.minutes %>
