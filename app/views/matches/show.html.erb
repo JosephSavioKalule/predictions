@@ -7,7 +7,7 @@
       <h2><%= "#{@match.home_goals} - #{@match.away_goals}" %></h2>
     <% end %>
     
-    <p>Kick off: <%= @match.match_date_time.strftime("%m/%d/%Y at %I:%M%p (%Z)") %></p>
+    <p>Kick off: <%= @match.match_date_time.strftime("%d/%m/%Y at %I:%M%p (%Z)") %></p>
     
     <% if DateTime.now < @match.match_date_time %>
     <p>
@@ -38,6 +38,10 @@
         <% end %>
       <% end %>
     </div>
+    
+    <% if current_user && current_user.admin? && !@match.home_goals %>
+      <%= link_to "Edit match", edit_league_match_path(@match.league, @match), class:'btn btn-outline-primary' %>
+    <% end %>
     
     <%= link_to "#{@match.league.name} matches", league_matches_path(@match.league), class:'btn btn-outline-dark' %>
   </div>

@@ -18,5 +18,9 @@
         </tr>
       <% end %>
     </table>
+    
+    <% if current_user && current_user.admin? %>
+    <%= link_to 'New Match', new_league_match_path(@league, @match), class: "btn btn-outline-primary" %>
+    <% end %>
   </div>
 </div>

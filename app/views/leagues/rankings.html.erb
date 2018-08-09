@@ -1,0 +1,30 @@
+<% provide(:title, 'Rankings') %>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h4 class="center">Top <%= @league.name %> predictors</h4>
+    <table class="table table-sm table-hover table-bordered table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Played</th>
+          <th scope="col">Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% c = 0 %>
+        <% @predictors.each do |p| %>
+        <tr>
+          <td><%= c+=1 %></td>
+          <td><%= link_to p.user.name, user_path(p.user) %></td>
+          <td><%= p.games_played %></td>
+          <td><%= p.points %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <%= link_to 'Back', league_path(@league), class: 'btn btn-outline-dark' %>
+  </div>
+</div>

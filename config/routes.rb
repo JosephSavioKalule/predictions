@@ -20,10 +20,13 @@ Rails.application.routes.draw do
   
   resources :seasons, only: [:index, :show]
   resources :leagues, only: [:index, :show] do
-    resources :matches, only: [:index, :show] do
+    resources :matches, only: [:index, :show, :edit, :update, :new, :create] do
       resources :predictions
     end
   end
+  
+  get '/leagues/:id/rankings', to: 'leagues#rankings'
+  
   resources :teams, only: [:index, :show]
   
 

@@ -1,0 +1,46 @@
+<% provide(:title, 'New Match') %>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h4>New Match</h4>
+    
+    <%= form_for(@match, url: league_matches_path) do |f| %>
+      <% if @match.errors.any? %>
+        <div id="error_explanation">
+          <div class="alert alert-danger">
+            The form contains <%= pluralize(@match.errors.count, "error") %>.
+          </div>
+          <ul>
+          <% @match.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      <% teams_array = Team.where("league_id=?", @league.id).map { |team| [team.name, team.id] } %>
+      <%= f.label :home_team %>
+      <%= f.select(:home_team_id) do %>
+        <%= options_for_select(teams_array) %>
+      <% end %>
+      
+      <%= f.label :away_team %>
+      <%= f.select(:away_team_id) do %>
+        <%= options_for_select(teams_array) %>
+      <% end %>
+      
+      <%= f.label :match_date_time %>
+      <%= f.text_field :match_date_time, class: "form-control" %>
+      
+      <%= f.label :home_team %>
+      <%= f.select(:home_goals, options_for_select((0..10).step(1))) %>
+      
+      <%= f.label :away_team %>
+      <%= f.select(:away_goals, options_for_select((0..10).step(1))) %>
+      
+      <%= f.submit "Save changes", class: "btn btn-outline-success" %>
+      <%= link_to "Cancel", league_matches_path(@match.league), class: "btn btn-outline-dark" %>
+      
+    <% end %>
+  </div>
+</div>

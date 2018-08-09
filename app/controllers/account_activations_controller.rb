@@ -6,6 +6,10 @@ class AccountActivationsController < ApplicationController
       user.activate
       log_in user
       flash[:success] = "Account activated!"
+      user.predictors.build(league_id:1).save!
+      user.predictors.build(league_id:2).save!
+      user.predictors.build(league_id:3).save!
+      user.predictors.build(league_id:4).save!
       redirect_to user
     else
       flash[:danger] = "Invalid activation link"

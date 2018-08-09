@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180806182642) do
+ActiveRecord::Schema.define(version: 20180809072059) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(version: 20180806182642) do
     t.index ["user_id", "created_at"], name: "index_predictions_on_user_id_and_created_at"
     t.index ["user_id", "match_id"], name: "index_predictions_on_user_id_and_match_id", unique: true
     t.index ["user_id"], name: "index_predictions_on_user_id"
+  end
+
+  create_table "predictors", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "league_id"
+    t.integer "games_played", default: 0
+    t.integer "points", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["league_id"], name: "index_predictors_on_league_id"
+    t.index ["user_id", "league_id"], name: "index_predictors_on_user_id_and_league_id", unique: true
+    t.index ["user_id"], name: "index_predictors_on_user_id"
   end
 
   create_table "seasons", force: :cascade do |t|

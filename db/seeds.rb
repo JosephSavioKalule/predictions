@@ -88,47 +88,47 @@ teams = Team.create!([
   { name: 'Sevilla', league: leagues[1] },
   { name: 'Valencia', league: leagues[1] },
   { name: 'Real Valladolid', league: leagues[1] },
-  { name: 'Villarreal', league: leagues[1] },              # 34
+  { name: 'Villarreal', league: leagues[1] },              # 40
   # Ligue 1:
   { name: 'Amiens', league: leagues[2] },
-  { name: 'Angers', league: leagues[2] },
+  { name: 'Angers', league: leagues[2] },                  # 42
   { name: 'Bordeaux', league: leagues[2] },
-  { name: 'Caen', league: leagues[2] },
+  { name: 'Caen', league: leagues[2] },                    # 44
   { name: 'Dijon', league: leagues[2] },
-  { name: 'Guingamp', league: leagues[2] },
+  { name: 'Guingamp', league: leagues[2] },                # 46
   { name: 'Lille', league: leagues[2] },
-  { name: 'Lyon', league: leagues[2] },
+  { name: 'Lyon', league: leagues[2] },                    # 48
   { name: 'Marseille', league: leagues[2] },
   { name: 'Monaco', league: leagues[2] },
   { name: 'Montpellier', league: leagues[2] },
-  { name: 'Nantes', league: leagues[2] },
+  { name: 'Nantes', league: leagues[2] },                  # 52
   { name: 'Nice', league: leagues[2] },
   { name: 'Nimes', league: leagues[2] },
   { name: 'Paris Saint Germain', league: leagues[2] },
-  { name: 'Reims', league: leagues[2] },
+  { name: 'Reims', league: leagues[2] },                   # 56
   { name: 'Rennes', league: leagues[2] },
   { name: 'Saint-Etienne', league: leagues[2] },
   { name: 'Strasbourg', league: leagues[2] },
-  { name: 'Toulouse', league: leagues[2] },
+  { name: 'Toulouse', league: leagues[2] },                # 60
   # Serie A:
   { name: 'AC Milan', league: leagues[3] },
-  { name: 'Atalanta', league: leagues[3] },
+  { name: 'Atalanta', league: leagues[3] },                # 62
   { name: 'Bologna', league: leagues[3] },
-  { name: 'Cagliari', league: leagues[3] },
+  { name: 'Cagliari', league: leagues[3] },                # 64
   { name: 'Chievo Verona', league: leagues[3] },
-  { name: 'Empoli', league: leagues[3] },
+  { name: 'Empoli', league: leagues[3] },                  # 66
   { name: 'Fiorentina', league: leagues[3] },
-  { name: 'Frosinone', league: leagues[3] },
+  { name: 'Frosinone', league: leagues[3] },               # 68
   { name: 'Genoa', league: leagues[3] },
-  { name: 'Inter', league: leagues[3] },
+  { name: 'Inter', league: leagues[3] },                   # 70
   { name: 'Juventus', league: leagues[3] },
-  { name: 'S.S. Lazio', league: leagues[3] },
+  { name: 'S.S. Lazio', league: leagues[3] },              # 72
   { name: 'Roma', league: leagues[3] },
-  { name: 'Sampdoria', league: leagues[3] },
+  { name: 'Sampdoria', league: leagues[3] },               # 74
   { name: 'Sassuolo', league: leagues[3] },
-  { name: 'SPAL 2013', league: leagues[3] },
+  { name: 'SPAL 2013', league: leagues[3] },               # 76
   { name: 'SSC Napoli', league: leagues[3] },
-  { name: 'Torino', league: leagues[3] },
+  { name: 'Torino', league: leagues[3] },                  # 78
   { name: 'Udinese', league: leagues[3] },
-  { name: 'Parma Calcio 1913', league: leagues[3] }
+  { name: 'Parma Calcio 1913', league: leagues[3] }        # 80
   ])

@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   
   has_many :predictions
+  has_many :predictors
   
   class << self
     # Returns the hash digest of the given string.
