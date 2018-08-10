@@ -45,6 +45,8 @@
           <%= link_to 'Predict', new_league_match_prediction_path(@match.league,@match), class:"btn btn-outline-primary" %>
           <% end %>
         </p>
+        <% else %>
+          <%= link_to 'Log in to predict', log_in_path %>
         <% end %>
       <% end %>
     </div>
