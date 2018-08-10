@@ -14,6 +14,6 @@ class LeaguesController < ApplicationController
   
   def rankings
     @league = League.find(params[:id])
-    @predictors = @league.predictors.order(points: :desc)
+    @predictors = @league.predictors.order(points: :desc).paginate(page: params[:page])
   end
 end
