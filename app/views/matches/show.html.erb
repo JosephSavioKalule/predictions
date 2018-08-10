@@ -8,11 +8,21 @@
     <% end %>
     
     <p>Kick off: <%= @match.match_date_time.strftime("%d/%m/%Y at %I:%M%p (%Z)") %></p>
+    <% @days_to_match = ((@match.match_date_time - DateTime.now) / 1.day).floor %>
+    <% @hours_to_match = ((@match.match_date_time - DateTime.now) / 1.hour).floor %>
+    <% @minutes_to_match = ((@match.match_date_time - DateTime.now) / 1.minute).floor %>
+    <% @seconds_to_match = ((@match.match_date_time - DateTime.now) / 1.second).floor %>
     
     <% if DateTime.now < @match.match_date_time %>
     <p>
-      Kick off in <%= pluralize(((@match.match_date_time - DateTime.now) / 1.day).round, "day") %>
-      and <%= pluralize((((@match.match_date_time - DateTime.now) / 1.hour).round)%24, "hour") %>
+      Kick off in 
+      <% if @days_to_match > 0 %>
+      <%= pluralize(@days_to_match, "day") %> and
+      <% end %>
+      <% if @hours_to_match > 0 %>
+      <%= pluralize(@hours_to_match % 24, "hour") %> and
+      <% end %>
+      <%= pluralize(@minutes_to_match % 60, "minutes") %>
     </p>
     <% end %>
     
