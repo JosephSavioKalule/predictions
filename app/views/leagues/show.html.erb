@@ -8,7 +8,15 @@
 
 <ul>
   <% @recent_matches.each do |m| %>
-  <li><%= m.match_date_time %>  <%= m.home_team.name %> vs <%= m.away_team.name %></li>
+  <li><%= m.match_date_time.strftime("%d/%m/%Y at %I:%M%p (%Z)") %>
+  <%= m.home_team.name %>
+  <% if m.home_goals && m.away_goals %>
+    <%= "#{m.home_goals} - #{m.away_goals}" %>
+  <% else %>
+  vs
+  <% end %>
+  <%= m.away_team.name %>
+  </li>
   <% end %>
 </ul>
 
