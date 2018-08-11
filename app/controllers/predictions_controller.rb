@@ -1,8 +1,8 @@
 class PredictionsController < ApplicationController
   before_action :logged_in_user, only: [:index, :show, :edit, :new, :create, :update, :destroy]
   before_action :set_prediction, only: [:show, :edit, :update, :destroy]
-  before_action :valid_match, only: :create
-  before_action :future_match, only: :create
+  before_action :valid_match, only: [:create, :update]
+  before_action :future_match, only: [:new, :create, :edit, :update]
   before_action :correct_user, only: :destroy
   
   def index
@@ -68,7 +68,11 @@ class PredictionsController < ApplicationController
     
     # before checks:
     def valid_match
-      @match = Match.find(params[:match_id])
+      if params[:match_id]
+        @match = Match.find(params[:match_id])
+      else
+        @match = Match.find(@prediction.match_id)
+      end
       redirect_to league_matches_path(params[:league_id]) and return unless !!@match
     end
     

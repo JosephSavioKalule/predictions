@@ -16,12 +16,14 @@
         <%= "#{@match.home_team.name} #{@match.home_goals} - #{@match.away_goals} #{@match.away_team.name}" %>
       </div>
     <% end %>
+    <% if @match.match_date_time >= 1.hour.from_now %>
     <p>
       <%= link_to 'Modify', edit_user_prediction_path(@user, @prediction),
                   class: 'btn btn-outline-primary' %> |
       <%= link_to 'Delete', user_prediction_path(@user, @prediction),
                   method: :delete, class: 'btn btn-outline-danger' %>
     </p>
+    <% end %>
     <hr>
     <p><%= link_to 'All predictions', user_predictions_path(@prediction.user), class: 'btn btn-outline-dark' %></p>
     
