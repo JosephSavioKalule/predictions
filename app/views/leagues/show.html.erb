@@ -4,10 +4,10 @@
 
 <p>Country: <%= @league.country.name %></p>
 
-<h3>Matches:</h3>
+<h3>Recent Matches:</h3>
 
 <ul>
-  <% @matches.each do |m| %>
+  <% @recent_matches.each do |m| %>
   <li><%= m.match_date_time %>  <%= m.home_team.name %> vs <%= m.away_team.name %></li>
   <% end %>
 </ul>

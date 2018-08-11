@@ -6,7 +6,7 @@ class LeaguesController < ApplicationController
   def show
     @league = League.find(params[:id])
     @teams = @league.teams.order(:name)
-    @matches = @league.matches.where("match_date_time < ?", 2.weeks.from_now).order("match_date_time").limit(3)
+    @recent_matches = @league.matches.where("match_date_time < ?", 1.minute.ago).order(match_date_time: :desc).limit(5)
   end
   
   def table
