@@ -47,7 +47,7 @@ class MatchesController < ApplicationController
         flash[:success] = "Match updated"
         # update predictor points
         # 1 point for everyone:
-        Prediction.where("match_id=?", @match.id)
+        # Prediction.where("match_id=?", @match.id)
         @match.predictions.each do |prediction|
           prediction.user.predictors.where("league_id=?", @match.league_id).first.increment!(:games_played)
           prediction.user.predictors.where("league_id=?", @match.league_id).first.increment!(:points)
