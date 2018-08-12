@@ -18,11 +18,7 @@
   </aside>
   
   <div class="col-md-8">
-    <h4><%= current_user?(@user) ? "My" : "#{@user.name}'s" %> Predictions</h4>
-    <ul>
-      <% @predictions.each do |p| %>
-      <li><%= p.match.home_team.name %> vs <%= p.match.away_team.name %></li>
-      <% end %>
-    </ul>
+    <h4><%= current_user?(@user) ? "Hi #{@user.name}" : "#{@user.name}'s Profile" %></h4>
+    <p>Member since: <%= @user.activated_at.strftime("%d/%m/%Y") %></p>
   </div>
 </div>
