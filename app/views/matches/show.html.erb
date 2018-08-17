@@ -4,11 +4,11 @@
   <div class="col-md-6 offset-md-3">
     <h3>
       <% if @match.home_team.logo_url %>
-      <%= image_tag(@match.home_team.logo_url, width: '100') %>
+      <%= image_tag(@match.home_team.logo_url, width: '50') %>
       <% end %>
       <%= "#{@match.home_team.name} vs #{@match.away_team.name}" %>
       <% if @match.away_team.logo_url %>
-      <%= image_tag(@match.away_team.logo_url, width: '100') %>
+      <%= image_tag(@match.away_team.logo_url, width: '50') %>
       <% end %>
     </h3>
     <% if @match.home_goals && @match.away_goals %>
