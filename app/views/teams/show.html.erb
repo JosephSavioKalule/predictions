@@ -13,8 +13,10 @@
     <ul>
       <% @matches.each do |m| %>
       <li>
+        <%= link_to league_match_path(@team.league_id, m) do %>
         <%= m.home_team.name %> <%= m.home_goals.nil? ? "vs" : "#{m.home_goals} - #{m.away_goals}" %> <%= m.away_team.name %>
         | <%= m.match_date_time.strftime('%d/%m/%y') %>
+        <% end %>
       </li>
       <% end %>
     </ul>
