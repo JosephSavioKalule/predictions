@@ -6,7 +6,7 @@ class MatchesController < ApplicationController
   
   def index
     @league = League.find(params[:league_id])
-    @matches = @league.matches.where("match_date_time > ?", 1.day.ago).order(:match_date_time)
+    @matches = @league.matches.where("match_date_time > ?", 8.days.ago).order(:match_date_time)
   end
   
   def show
