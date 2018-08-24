@@ -1,8 +1,10 @@
 <!-- Jumbotron Header -->
       <header class="jumbotron my-4" style="background-image:url('https://www.customwallpaper.net.au/wp-content/uploads/2016/07/Soccer-ball-in-goal-1024x543.jpeg');background-size:cover;background-repeat:no-repeat">
         <h1>Soccer Predictions</h1>
-        <h3 class="header">Think you can predict the future?<br>Put your prediction skills to the test here!</h3>
-        <% if !logged_in? %>
+        <% if logged_in? %>
+          <h3 class="header"><%= "Hello, #{@user.name}" %></h3>
+        <% else %>
+          <h3 class="header">Think you can predict the future?<br>Put your prediction skills to the test here!</h3>
           <h3 class="header"><%= link_to 'Sign Up!', signup_path, class: 'btn btn-lg btn-dark' %></h3>
         <% end %>
       </header>
