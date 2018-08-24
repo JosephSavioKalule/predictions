@@ -12,7 +12,7 @@ class PredictionsController < ApplicationController
     else
       @user = current_user
     end
-    @predictions = @user.predictions
+    @predictions = @user.predictions.paginate(page: params[:page])
   end
 
   def show
