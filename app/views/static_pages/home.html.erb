@@ -70,11 +70,15 @@
             <div class="card-body">
               <h4 class="card-title">Upcoming Matches</h4>
               <p class="card-text">
+                <ul>
                 <% @upcoming_matches.each do |m| %>
+                  <li>
                   <%= link_to league_match_path(m.league, m) do %>
                   <%= "#{m.home_team.name} ? - ? #{m.away_team.name}" %>
                   <% end %>
+                  </li>
                 <% end %>
+                </ul>
               </p>
             </div>
             <div class="card-footer">
