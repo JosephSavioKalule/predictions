@@ -15,7 +15,7 @@
     <% @predictions.each do |p| %>
       <div>
         <h6><%= link_to 'Match:', league_match_path(p.match.league, p.match) %></h6>
-        <%= "#{p.match.home_team.name} vs #{p.match.away_team.name}" %>
+        <%= "[#{p.match.match_date_time.strftime('%d/%m/%Y at %H:%M')}] #{p.match.home_team.name} vs #{p.match.away_team.name}" %>
       </div>
       <div>
         <h6><%= link_to 'Prediction:', user_prediction_path(@user, p) %></h6>
