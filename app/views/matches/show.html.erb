@@ -6,14 +6,17 @@
       <% if @match.home_team.logo_url %>
       <%= image_tag(@match.home_team.logo_url, width: '50') %>
       <% end %>
-      <%= "#{@match.home_team.name} vs #{@match.away_team.name}" %>
+      <%= @match.home_team.name %>
+      <% if @match.home_goals && @match.away_goals %>
+        <%= "#{@match.home_goals} - #{@match.away_goals}" %>
+      <% else %>
+        <%= " vs " %>
+      <% end %>
+      <%= @match.away_team.name %>
       <% if @match.away_team.logo_url %>
       <%= image_tag(@match.away_team.logo_url, width: '50') %>
       <% end %>
     </h3>
-    <% if @match.home_goals && @match.away_goals %>
-      <h2><%= "#{@match.home_goals} - #{@match.away_goals}" %></h2>
-    <% end %>
     
     <p>Kick off: <%= @match.match_date_time.strftime("%d/%m/%Y at %I:%M%p (%Z)") %></p>
     <% @days_to_match = ((@match.match_date_time - DateTime.now) / 1.day).floor %>
