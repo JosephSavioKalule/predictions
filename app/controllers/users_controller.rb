@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     else
       @user = current_user
     end
-    @predictions = Prediction.where("user_id=?", @user.id).limit(5)
+    @num_predictions = @user.predictions.count
   end
   
   def new
