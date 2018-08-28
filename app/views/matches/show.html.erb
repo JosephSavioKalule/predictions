@@ -2,9 +2,9 @@
 
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <h3>
+    <h4>
       <% if @match.home_team.logo_url %>
-      <%= image_tag(@match.home_team.logo_url, width: '50') %>
+      <%= image_tag(@match.home_team.logo_url, width: '40') %>
       <% end %>
       <%= @match.home_team.name %>
       <% if @match.home_goals && @match.away_goals %>
@@ -14,9 +14,9 @@
       <% end %>
       <%= @match.away_team.name %>
       <% if @match.away_team.logo_url %>
-      <%= image_tag(@match.away_team.logo_url, width: '50') %>
+      <%= image_tag(@match.away_team.logo_url, width: '40') %>
       <% end %>
-    </h3>
+    </h4>
     
     <p>Kick off: <%= @match.match_date_time.strftime("%d/%m/%Y at %I:%M%p (%Z)") %></p>
     <% @days_to_match = ((@match.match_date_time - DateTime.now) / 1.day).floor %>
