@@ -5,7 +5,19 @@
 <div class="row">
   <div class="col-md-6 offset-md-3">
     <table class="table table-sm table-dark">
-      <% @matches.each do |match| %>
+      <% @future_matches.each do |match| %>
+        <tr>
+          <td class="home"><%= match.home_team.name %></td>
+          <td class="score">
+            <%= link_to league_match_path(@league,match) do %>
+            <%= match.home_goals.nil? ? "?" : match.home_goals %> - <%= match.away_goals.nil? ? "?" : match.away_goals %>
+            <% end %>
+            <br><%= match.match_date_time.strftime("%d/%m/%Y at %H:%M") %>
+          </td>
+          <td class="away"><%= match.away_team.name %></td>
+        </tr>
+      <% end %>
+      <% @old_matches.each do |match| %>
         <tr>
           <td class="home"><%= match.home_team.name %></td>
           <td class="score">
