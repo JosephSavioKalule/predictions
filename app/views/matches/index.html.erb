@@ -24,7 +24,7 @@
             <%= link_to league_match_path(@league,match) do %>
             <%= match.home_goals.nil? ? "?" : match.home_goals %> - <%= match.away_goals.nil? ? "?" : match.away_goals %>
             <% end %>
-            <br><%= match.match_date_time.strftime("%d/%m/%Y at %H:%M") %>
+            <br><%= match.match_date_time.strftime("%d/%m/%Y") %>
           </td>
           <td class="away"><%= match.away_team.name %></td>
         </tr>
