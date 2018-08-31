@@ -13,6 +13,9 @@ class UsersController < ApplicationController
       redirect_to root_url and return unless @user.activated?
     else
       @user = current_user
+      @urgent_predictions = Match.where("match_date_time > ? and match_date_time < ? and id not in (?)",
+          1.hour.from_now, 24.hours.from_now, Prediction.select(:match_id).where("user_id=?",@user.id))
+          .order(:match_date_time)
     end
     @num_predictions = @user.predictions.count
   end
