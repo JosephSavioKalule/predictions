@@ -36,5 +36,7 @@
       <%= f.submit "Save changes", class: "btn btn-outline-success" %>
       
     <% end %>
+    
+    <%= link_to "Back to Match", league_match_path(@match.league, @match), class: "btn btn-outline-dark" %>
   </div>
 </div>

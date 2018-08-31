@@ -2,6 +2,8 @@
 
 <div class="row">
   <div class="col-md-6 offset-md-3">
+    <h3>Edit Prediction</h3>
+    
     <%= form_for(@prediction, url: user_prediction_path) do |f| %>
       <% if @prediction.errors.any? %>
         <div id="error_explanation">
@@ -35,5 +37,7 @@
       <%= f.submit "Save changes", class: "btn btn-outline-success" %>
       
     <% end %>
+    
+    <%= link_to "Back to Match", league_match_path(@match.league, @match), class: "btn btn-outline-dark" %>
   </div>
 </div>
