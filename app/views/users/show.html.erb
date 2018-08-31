@@ -20,17 +20,28 @@
   </aside>
   
   <div class="col-md-8">
-    <h4><%= current_user?(@user) ? "Hi #{@user.name}" : "#{@user.name}'s Profile" %></h4>
-    <p>Member since: <%= @user.activated_at.strftime("%d/%m/%Y") %></p>
-    <p><%= pluralize(@num_predictions, 'prediction') %></p>
+    <div class="card" style="width: 22rem;">
+      <div class="card-body">
+        <h4><%= current_user?(@user) ? "Hi #{@user.name}" : "#{@user.name}'s Profile" %></h4>
+        <p>Member since: <%= @user.activated_at.strftime("%d/%m/%Y") %></p>
+        <p><%= pluralize(@num_predictions, 'prediction') %></p>
+      </div>
+    </div>
     
     <% if @urgent_predictions && @urgent_predictions.any? %>
-    <h5>Don't forget to predict on these matches:</h5>
-    <ul>
-      <% @urgent_predictions.each do |up| %>
-      <li><%= link_to "#{up.home_team.name} vs #{up.away_team.name}", league_match_path(up.league, up) %></li>
-      <% end %>
-    </ul>
+    <br>
+    <div class="card" style="width: 22rem;">
+      <div class="card-header">
+        Don't forget to predict on these matches:
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @urgent_predictions.each do |up| %>
+        <li class="list-group-item">
+          <%= link_to "#{up.home_team.name} vs #{up.away_team.name}", league_match_path(up.league, up) %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
     <% end %>
   </div>
 </div>
