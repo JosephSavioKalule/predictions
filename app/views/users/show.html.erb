@@ -25,7 +25,7 @@
     <p><%= pluralize(@num_predictions, 'prediction') %></p>
     
     <% if @urgent_predictions && @urgent_predictions.any? %>
-    <h5>These upcoming matches need your attention:</h5>
+    <h5>Don't forget to predict on these matches:</h5>
     <ul>
       <% @urgent_predictions.each do |up| %>
       <li><%= link_to "#{up.home_team.name} vs #{up.away_team.name}", league_match_path(up.league, up) %></li>
