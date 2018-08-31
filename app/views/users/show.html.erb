@@ -20,7 +20,7 @@
   </aside>
   
   <div class="col-md-8">
-    <div class="card" style="width: 22rem;">
+    <div class="card text-white bg-success mb-3" style="max-width: 22rem;">
       <div class="card-body">
         <h4><%= current_user?(@user) ? "Hi #{@user.name}" : "#{@user.name}'s Profile" %></h4>
         <p>Member since: <%= @user.activated_at.strftime("%d/%m/%Y") %></p>
@@ -29,8 +29,8 @@
     </div>
     
     <% if @urgent_predictions && @urgent_predictions.any? %>
-    <br>
-    <div class="card" style="width: 22rem;">
+
+    <div class="card text-white bg-dark mb-3" style="max-width: 22rem;">
       <div class="card-header">
         Don't forget to predict on these matches:
       </div>
