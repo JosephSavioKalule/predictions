@@ -12,6 +12,26 @@
       <!-- Page Features -->
       <div class="row text-center">
 
+        <% if logged_in? %>
+        
+          <% for i in 0..3 %>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title"><%= @leagues[i].name %></h4>
+              <p class="card-text">See how you rank</p>
+            </div>
+            <div class="card-footer">
+              <%= link_to 'Rankings', "#{league_path(@leagues[i])}/rankings", class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+        
+          <% end %>
+        
+        <% else %>
+        
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
             <img class="card-img-top" height="160px" src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" alt="EPL">
@@ -63,6 +83,8 @@
             </div>
           </div>
         </div>
+        
+        <% end %>
         
         <% if @upcoming_matches.any? %>
         <div class="col-lg-6 offset-lg-3">
