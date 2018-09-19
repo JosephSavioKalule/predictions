@@ -72,6 +72,13 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
   
+  # Sends a reminder
+  def send_reminders(users)
+    users.each do |u|
+      UserMailer.reminder(u).deliver_now
+    end
+  end
+  
   private
 
     # Converts email to all lower-case.

@@ -9,4 +9,9 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: user.email, subject: "Password reset"
   end
+  
+  def reminder(user)
+    @user = user
+    mail to: user.email, subject: "Reminder from soccer-predictions"
+  end
 end
