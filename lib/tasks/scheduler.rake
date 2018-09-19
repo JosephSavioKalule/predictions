@@ -21,8 +21,10 @@ task :send_reminders => :environment do
     end
   end
   
+  puts "Going to send #{pluralize(@users.count, 'email')}..."
   @users.each do |u| 
     u.send_reminder
-    puts "reminder sent to #{u.email}"
+    puts "Reminder sent to #{u.email}"
   end
+  puts "Finished sending #{pluralize(@users.count, 'email')}."
 end
