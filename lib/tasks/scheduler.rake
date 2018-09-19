@@ -21,7 +21,8 @@ task :send_reminders => :environment do
     end
   end
   
-  if @users.count > 0
-    User.send_reminders @users
+  @users.each do |u| 
+    u.send_reminder
+    puts "reminder sent to #{u.email}"
   end
 end

@@ -73,10 +73,8 @@ class User < ApplicationRecord
   end
   
   # Sends a reminder
-  def send_reminders(users)
-    users.each do |u|
-      UserMailer.reminder(u).deliver_now
-    end
+  def send_reminder
+    UserMailer.reminder(self).deliver_now
   end
   
   private
