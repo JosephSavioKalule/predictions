@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
+  user: archer
   league: one
   games_played: 1
   points: 1
 
 two:
-  user: two
+  user: lana
   league: two
   games_played: 1
   points: 1
