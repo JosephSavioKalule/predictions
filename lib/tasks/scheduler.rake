@@ -11,7 +11,7 @@ task :send_reminders => :environment do
         @should_send_email = true
       end
     else
-      if (Time.now - User.first.created_at)/1.days > 6
+      if (Time.now - user.created_at)/1.days > 6
         @should_send_email = true
       end
     end
