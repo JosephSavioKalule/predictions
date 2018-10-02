@@ -1,35 +1,40 @@
 <% provide(:title, @league.name) %>
 
-<h1><%= @league.name %></h1>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="center">
+      <img src="<%= @league.logo_url %>" alt="<%= @league.name %>">
+      <p>Country: <%= @league.country.name %></p>
+    </div>
 
-<p>Country: <%= @league.country.name %></p>
-
-<h3>Recent Matches:</h3>
-
-<ul>
-  <% @recent_matches.each do |m| %>
-  <li><%= m.match_date_time.strftime("%d/%m/%Y at %I:%M%p (%Z)") %>
-  <%= m.home_team.name %>
-  <% if m.home_goals && m.away_goals %>
-    <%= "#{m.home_goals} - #{m.away_goals}" %>
-  <% else %>
-  vs
-  <% end %>
-  <%= m.away_team.name %>
-  </li>
-  <% end %>
-</ul>
-
-<p><%= link_to 'All matches', league_matches_path(@league) %></p>
-
-<% if logged_in? %>
-  <p><%= link_to 'Rankings', "#{league_path}/rankings", class: 'btn btn-outline-primary' %></p>
-<% end %>
-
-<h3>Teams:</h3>
-
-<ul>
-  <% @teams.each do |team| %>
-  <li><%= link_to team.name, team %></li>
-  <% end %>
-</ul>
+    <h3>Recent Matches:</h3>
+    
+    <ul>
+      <% @recent_matches.each do |m| %>
+      <li><%= m.match_date_time.strftime("%d/%m/%Y at %I:%M%p (%Z)") %>
+      <%= m.home_team.name %>
+      <% if m.home_goals && m.away_goals %>
+        <%= "#{m.home_goals} - #{m.away_goals}" %>
+      <% else %>
+      vs
+      <% end %>
+      <%= m.away_team.name %>
+      </li>
+      <% end %>
+    </ul>
+    
+    <p><%= link_to 'All matches', league_matches_path(@league) %></p>
+    
+    <% if logged_in? %>
+      <p><%= link_to 'Rankings', "#{league_path}/rankings", class: 'btn btn-outline-primary' %></p>
+    <% end %>
+    
+    <h3>Teams:</h3>
+    
+    <ul>
+      <% @teams.each do |team| %>
+      <li><%= link_to team.name, team %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

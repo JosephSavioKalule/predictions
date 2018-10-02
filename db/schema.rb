@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180809072059) do
+ActiveRecord::Schema.define(version: 20181002084519) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180809072059) do
     t.integer "season_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "logo_url"
     t.index ["country_id"], name: "index_leagues_on_country_id"
     t.index ["season_id"], name: "index_leagues_on_season_id"
   end
