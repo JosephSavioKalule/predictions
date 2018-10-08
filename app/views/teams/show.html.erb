@@ -9,6 +9,11 @@
     <% end %>
     <p>League: <%= @team.league.name %> <span class="end"><%= link_to 'Details', @team.league %></span></p>
     <p>Country: <%= @team.league.country.name %></p>
+    <p>Form:
+      <% @form.each do |f| %>
+      <%= "#{f} - " %>
+      <% end %>
+    </p>
     <h4><%= @team.name %>'s matches</h4>
     <ul>
       <% @matches.each do |m| %>
