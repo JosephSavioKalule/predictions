@@ -260,21 +260,19 @@ input {
 
 .W {
   background-color: #55f555;
-  padding: 5px;
-  border-radius: 4px;
-  width: 45px;
 }
 
 .D {
   background-color: #f5f555;
-  padding: 5px;
-  border-radius: 4px;
-  width: 45px;
 }
 
 .L {
   background-color: #f55555;
+}
+
+.W, .D, .L {
   padding: 5px;
   border-radius: 4px;
   width: 45px;
+  display: inline-block;
 }
