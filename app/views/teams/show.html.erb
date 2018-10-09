@@ -11,7 +11,7 @@
     <p>Country: <%= @team.league.country.name %></p>
     <p>Form:
       <% @form.each do |f| %>
-      <%= "#{f} - " %>
+      <span class="<%= "#{f}" %>"><%= "#{f}" %></span>
       <% end %>
     </p>
     <h4><%= @team.name %>'s matches</h4>
