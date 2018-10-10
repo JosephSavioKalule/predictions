@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
   
   def index
+    #@users = User.where(activated: true).order(:id).reverse_order.paginate(page: params[:page])
     @users = User.where(activated: true).paginate(page: params[:page])
   end
   
@@ -20,6 +21,10 @@ class UsersController < ApplicationController
             .order(:match_date_time)
     end
     @num_predictions = @user.predictions.count
+    if @num_predictions > 0
+      @predictors = @user.predictors
+    else
+    end
   end
   
   def new
@@ -43,7 +48,7 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update_attributes(user_update_params)
       flash[:success] = "Profile updated"
       redirect_to @user
     else
@@ -60,6 +65,11 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :email, :password,
+                                   :password_confirmation)
+    end
+    
+    def user_update_params
+      params.require(:user).permit(:name, :password,
                                    :password_confirmation)
     end
     
