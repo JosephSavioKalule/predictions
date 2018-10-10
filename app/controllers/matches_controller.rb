@@ -11,11 +11,15 @@ class MatchesController < ApplicationController
   end
   
   def show
+    @home_team = Team.find(@match.home_team_id)
+    @away_team = Team.find(@match.away_team_id)
+    
+    @home_team_form = @home_team.form(@home_team.matches)
+    @away_team_form = @away_team.form(@away_team.matches)
+    
     if logged_in?
       if Prediction.where("match_id=? and user_id=?", @match.id, current_user).count == 1
         @prediction = Prediction.where("match_id=? and user_id=?", @match.id, current_user).first
-      else
-        @user = current_user
       end
     end
   end
