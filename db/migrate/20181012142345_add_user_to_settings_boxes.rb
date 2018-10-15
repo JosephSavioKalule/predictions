@@ -1,0 +1,5 @@
+class AddUserToSettingsBoxes < ActiveRecord::Migration[5.1]
+  def change
+    add_reference :settings_boxes, :user, foreign_key: true
+  end
+end

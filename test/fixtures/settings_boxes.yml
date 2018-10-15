@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: simon
+  receive_email: true
+
+two:
+  user: archer
+  receive_email: false

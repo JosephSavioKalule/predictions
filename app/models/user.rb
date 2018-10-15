@@ -13,6 +13,7 @@ class User < ApplicationRecord
   
   has_many :predictions, dependent: :destroy
   has_many :predictors, dependent: :destroy
+  has_one :settings_box, dependent: :destroy
   
   class << self
     # Returns the hash digest of the given string.

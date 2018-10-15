@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   
   get '/help', to: 'static_pages#help'
+  get '/settings', to: 'static_pages#settings'
   
   get  '/signup',    to: 'users#new'
   post '/signup',    to: 'users#create'
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   get '/matches',    to: 'matches#index'
   resources :users do
     resources :predictions
+    resource :settings_box, only: [:update]
   end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

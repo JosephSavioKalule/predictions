@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :logged_in_user, only: [:settings]
+  
   def home
     @leagues = League.all.order(:id)
     @upcoming_matches = Match.where("match_date_time < ? and match_date_time > ?",
@@ -9,5 +11,10 @@ class StaticPagesController < ApplicationController
   end
 
   def help
+  end
+  
+  def settings
+    @user = current_user
+    @settings = @user.settings_box
   end
 end

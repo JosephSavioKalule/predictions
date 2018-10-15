@@ -10,6 +10,7 @@ class AccountActivationsController < ApplicationController
       user.predictors.build(league_id:2).save!
       user.predictors.build(league_id:3).save!
       user.predictors.build(league_id:4).save!
+      SettingsBox.create!(user_id: user.id, receive_email: true)
       redirect_to user
     else
       flash[:danger] = "Invalid activation link"

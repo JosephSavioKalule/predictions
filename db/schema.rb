@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181002084519) do
+ActiveRecord::Schema.define(version: 20181012142345) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -72,6 +72,14 @@ ActiveRecord::Schema.define(version: 20181002084519) do
     t.integer "start_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "settings_boxes", force: :cascade do |t|
+    t.boolean "receive_email", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_settings_boxes_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|

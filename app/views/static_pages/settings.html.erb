@@ -1,0 +1,32 @@
+<% provide(:title, 'Settings') %>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    
+    <h3>Settings</h3>
+    
+    <%= form_for @settings, :url => user_settings_box_path(@user) do |f| %>
+    
+    <div class="card bg-light">
+      <div class="card-body">
+        <h4 class="card-title">
+          Receive reminders by email:
+        </h4>
+        <p class="card-text">
+          <span>
+            <%= f.check_box :receive_email, checked: @settings.receive_email? %>
+            Check in order to receive reminders by email
+          </span>
+        </p>
+      </div>
+    </div>
+    <br>
+    <%= f.submit "Save changes", class: "btn btn-outline-success" %>
+    <% end %>
+    <br>
+    <p>
+      <%= link_to 'Cancel', profile_path, class: 'btn btn-outline-dark' %>
+    </p>
+    
+  </div>
+</div>
