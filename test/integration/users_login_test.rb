@@ -54,4 +54,16 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     log_in_as(@user, remember_me: '0')
     assert_empty cookies['remember_token']
   end
+  
+  test "login from home page" do
+    get root_path
+    assert_select "button[type='submit']"
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password' } }
+    assert is_logged_in?
+    assert_redirected_to @user
+    follow_redirect!
+    get root_path
+    assert_select "button[type='submit']", count: 0
+  end
 end
