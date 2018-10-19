@@ -11,8 +11,9 @@
     <section>
     <% if current_user?(@user) %>
       <h5>Actions</h5>
-      <%= link_to "Edit", edit_user_path(current_user) %> <br>
-      <%= link_to "My Predictions", user_predictions_path(current_user) %>
+      <%= link_to "Edit Profile", edit_user_path(current_user) %> <br>
+      <%= link_to "My Predictions", user_predictions_path(current_user) %> <br>
+      <%= link_to "Settings", settings_path %>
     <% else %>
       <%= link_to "#{@user.name}'s Predictions", user_predictions_path(@user) %>
     <% end %>

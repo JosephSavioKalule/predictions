@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  
   get 'profile',     to: 'users#show'
+  post 'profile/delete',     to: 'users#delete'
   
   resources :seasons, only: [:index, :show]
   resources :leagues, only: [:index, :show] do
