@@ -11,7 +11,6 @@ class PredictionsController < ApplicationController
       @old_match_ids = Match.where("match_date_time < ?", 1.hour.from_now).pluck(:id)
       @user = User.find(params[:user_id])
       @predictions = @user.predictions.where("match_id in (?)", @old_match_ids).paginate(page: params[:page])
-      byebug
     else
       @user = current_user
       @predictions = @user.predictions.paginate(page: params[:page])
