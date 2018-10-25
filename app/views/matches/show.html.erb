@@ -41,13 +41,13 @@
         </p>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <p><%= "#{@home_team.name} - recent form:" %></p>
+            <p><%= link_to @home_team.name, team_path(@home_team) %> - recent form: </p>
             <% @home_team_form.each do |f| %>
               <span class="<%= "#{f}" %>"><%= "#{f}" %></span>
             <% end %>
           </li>
           <li class="list-group-item">
-            <%= "#{@away_team.name} - recent form:" %><br>
+            <p><%= link_to @away_team.name, team_path(@away_team) %> - recent form: </p>
             <% @away_team_form.each do |f| %>
               <span class="<%= "#{f}" %>"><%= "#{f}" %></span>
             <% end %>
