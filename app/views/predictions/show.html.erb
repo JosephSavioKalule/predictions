@@ -2,20 +2,22 @@
 
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <div>
-      <h4>Match:</h4>
-      <%= "#{@match.home_team.name} vs #{@match.away_team.name}" %>
-    </div>
-    <div>
-      <h4>Prediction:</h4>
-      <%= "#{@match.home_team.name} #{@prediction.home_goals} - #{@prediction.away_goals} #{@match.away_team.name}" %>
-    </div>
-    <% if @match.home_goals %>
-      <div>
-        <h3>Match result:</h3>
-        <%= "#{@match.home_team.name} #{@match.home_goals} - #{@match.away_goals} #{@match.away_team.name}" %>
+    <div class="card mb-2">
+      <div class="card-header">
+        <%= link_to league_match_path(@match.league, @match) do %>
+          <%= "#{@match.home_team.name} vs #{@match.away_team.name}" %>
+        <% end %>
       </div>
-    <% end %>
+      <div class="card-body">
+        <h4>Prediction:</h4>
+        <%= "#{@match.home_team.name} #{@prediction.home_goals} - #{@prediction.away_goals} #{@match.away_team.name}" %>
+        <% if @match.home_goals %>
+          <h3>Match result:</h3>
+          <%= "#{@match.home_team.name} #{@match.home_goals} - #{@match.away_goals} #{@match.away_team.name}" %>
+        <% end %>
+      </div>
+    </div>
+    
     <% if @match.match_date_time >= 1.hour.from_now %>
     <p>
       <%= link_to 'Modify', edit_user_prediction_path(@user, @prediction),
