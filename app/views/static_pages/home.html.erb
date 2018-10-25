@@ -117,20 +117,18 @@
         <% if @upcoming_matches.any? %>
         <div class="col-lg-6 offset-lg-3">
           <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Upcoming Matches</h4>
-              <p class="card-text">
-                <ul>
-                <% @upcoming_matches.each do |m| %>
-                  <li>
-                  <%= link_to league_match_path(m.league, m) do %>
-                  <%= "#{m.home_team.name} ? - ? #{m.away_team.name}" %>
-                  <% end %>
-                  </li>
-                <% end %>
-                </ul>
-              </p>
+            <div class="card-header">
+              Upcoming Matches
             </div>
+            <ul class="list-group list-group-flush">
+              <% @upcoming_matches.each do |m| %>
+                <li class="list-group-item">
+                <%= link_to league_match_path(m.league, m) do %>
+                <%= "#{m.home_team.name} ? - ? #{m.away_team.name}" %>
+                <% end %>
+                </li>
+              <% end %>
+            </ul>
           </div>
         </div>
         <% end %>
