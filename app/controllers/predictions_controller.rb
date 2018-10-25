@@ -10,10 +10,10 @@ class PredictionsController < ApplicationController
     if current_user.id != params[:user_id].to_i
       @old_match_ids = Match.where("match_date_time < ?", 1.hour.from_now).pluck(:id)
       @user = User.find(params[:user_id])
-      @predictions = @user.predictions.where("match_id in (?)", @old_match_ids).paginate(page: params[:page])
+      @predictions = @user.predictions.where("match_id in (?)", @old_match_ids).order(created_at: :desc).paginate(page: params[:page])
     else
       @user = current_user
-      @predictions = @user.predictions.paginate(page: params[:page])
+      @predictions = @user.predictions.order(created_at: :desc).paginate(page: params[:page])
     end
   end
 
