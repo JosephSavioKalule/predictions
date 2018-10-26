@@ -4,7 +4,7 @@ class PredictionsController < ApplicationController
   before_action :set_match, only: [:show, :edit, :new, :create, :update, :destroy]
   before_action :valid_match, only: [:create, :update]
   before_action :future_match, only: [:new, :create, :edit, :update]
-  before_action :correct_user, only: :destroy
+  before_action :correct_user, only: [:edit, :update, :destroy]
   
   def index
     if current_user.id != params[:user_id].to_i
