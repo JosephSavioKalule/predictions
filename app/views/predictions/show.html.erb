@@ -2,6 +2,13 @@
 
 <div class="row">
   <div class="col-md-6 offset-md-3">
+    
+    <% if current_user?(@user) %>
+      <h3>My Prediction</h3>
+    <% else %>
+      <%= "#{@user.name}'s Prediction" %>
+    <% end %>
+    
     <div class="card mb-2">
       <div class="card-header">
         <%= link_to league_match_path(@match.league, @match) do %>
