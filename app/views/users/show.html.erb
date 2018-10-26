@@ -29,6 +29,12 @@
       </div>
     </div>
     
+    <div class="card text-white bg-success mb-3" style="max-width: 22rem;">
+      <div class="card-body">
+        <h4>Success rate: <%= @success_rate %>%</h4>
+      </div>
+    </div>
+    
     <% if @urgent_predictions && @urgent_predictions.any? %>
 
     <div class="card text-white bg-dark mb-3" style="max-width: 22rem;">
