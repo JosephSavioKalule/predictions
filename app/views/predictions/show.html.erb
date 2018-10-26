@@ -9,7 +9,7 @@
       <h3><%= "#{@user.name}'s Prediction" %></h3>
     <% end %>
     
-    <div class="card mb-2">
+    <div class="card mb-2 <%= @class unless !@class %>">
       <div class="card-header">
         <%= link_to league_match_path(@match.league, @match) do %>
           <%= "#{@match.home_team.name} vs #{@match.away_team.name}" %>

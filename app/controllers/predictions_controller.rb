@@ -20,6 +20,29 @@ class PredictionsController < ApplicationController
   def show
     @match = @prediction.match
     @user = User.find(@prediction.user_id)
+    if @match.home_goals # score available
+      if @match.home_goals > @match.away_goals # home win
+        if @prediction.home_goals > @prediction.away_goals # correct prediction
+          @class = 'text-white bg-success'
+        else # wrong prediction
+          @class = 'text-white bg-warning'
+        end
+      else # not home win
+        if @match.home_goals == @match.away_goals # draw
+          if @prediction.home_goals == @prediction.away_goals # correct prediction
+            @class = 'text-white bg-success'
+          else # wrong prediction
+            @class = 'text-white bg-warning'
+          end
+        else # home loss
+          if @prediction.home_goals < @prediction.away_goals # correct prediction
+            @class = 'text-white bg-success'
+          else # wrong prediction
+            @class = 'text-white bg-warning'
+          end
+        end
+      end
+    end
   end
   
   def new
