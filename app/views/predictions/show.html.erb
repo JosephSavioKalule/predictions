@@ -25,7 +25,7 @@
       </div>
     </div>
     
-    <% if current_user(@user) && @match.match_date_time >= 1.hour.from_now %>
+    <% if current_user?(@user) && @match.match_date_time >= 1.hour.from_now %>
     <p>
       <%= link_to 'Modify', edit_user_prediction_path(@user, @prediction),
                   class: 'btn btn-outline-primary' %> |
