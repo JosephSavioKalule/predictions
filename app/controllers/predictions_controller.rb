@@ -19,7 +19,7 @@ class PredictionsController < ApplicationController
 
   def show
     @match = @prediction.match
-    @user = current_user
+    @user = User.find(@prediction.user_id)
   end
   
   def new
