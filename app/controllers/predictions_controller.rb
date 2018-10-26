@@ -85,7 +85,11 @@ class PredictionsController < ApplicationController
     def future_match
       if @match.match_date_time < 1.hour.from_now
         flash[:warning] = 'Match no longer available for prediction'
-        redirect_to league_matches_path(params[:league_id])
+        if params[:league_id]
+          redirect_to league_matches_path(params[:league_id])
+        else
+          redirect_to root_path
+        end
       end
     end
     
