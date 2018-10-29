@@ -5,7 +5,12 @@ class Team < ApplicationRecord
     @matches = Match.where("home_team_id=? or away_team_id=?", self.id, self.id).limit(5).order(match_date_time: :desc)
   end
   
-  def form(matches)
+  def past_matches
+    @matches = Match.where("(home_team_id=? or away_team_id=?) and home_goals != nil", self.id, self.id)
+                    .limit(5).order(match_date_time: :desc)
+  end
+  
+  def form(past_matches)
     @form = []
     matches.reverse.each do |m|
       if m.home_goals && m.away_goals
