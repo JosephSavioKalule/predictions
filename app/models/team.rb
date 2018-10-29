@@ -6,7 +6,7 @@ class Team < ApplicationRecord
   end
   
   def past_matches
-    @matches = Match.where("(home_team_id=? or away_team_id=?) and home_goals != ?", self.id, self.id, nil)
+    @matches = Match.where("(home_team_id=? or away_team_id=?) and match_date_time < ?", self.id, self.id, 2.hours.ago)
                     .limit(5).order(match_date_time: :desc)
   end
   
