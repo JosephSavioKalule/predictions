@@ -24,8 +24,17 @@ class UsersController < ApplicationController
     if @num_predictions > 0
       @predictors = @user.predictors
       @total_points = @user.predictors.pluck(:points).sum
-      @num_played = @user.predictors.pluck(:games_played).sum
-      @success_rate = (100 * (@total_points - @num_played))/(4 * @num_predictions)
+      #@num_played = @user.predictors.pluck(:games_played).sum
+      #@success_rate = (100 * (@total_points - @num_played))/(4 * @num_predictions)
+      
+      @correct_draw_predictions = Match.where("id in (?) and home_goals=away_goals",
+                @user.predictions.where("home_goals=away_goals").pluck(:match_id)).count
+      @correct_loss_predictions = Match.where("id in (?) and home_goals<away_goals",
+                @user.predictions.where("home_goals<away_goals").pluck(:match_id)).count
+      @correct_win_predictions = Match.where("id in (?) and home_goals>away_goals",
+                @user.predictions.where("home_goals>away_goals").pluck(:match_id)).count
+      @total_correct_predictions = @correct_draw_predictions + @correct_win_predictions + @correct_loss_predictions
+      @success_rate = (100 * @total_correct_predictions)/@num_predictions
     else
       @success_rate = 0
     end
