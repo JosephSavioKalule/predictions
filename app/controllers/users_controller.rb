@@ -26,6 +26,8 @@ class UsersController < ApplicationController
       @total_points = @user.predictors.pluck(:points).sum
       @num_played = @user.predictors.pluck(:games_played).sum
       @success_rate = (100 * (@total_points - @num_played))/(4 * @num_predictions)
+    else
+      @success_rate = 0
     end
   end
   
