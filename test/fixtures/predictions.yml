@@ -22,3 +22,15 @@ four:
   away_goals: 0
   match: three
   user: lana
+  
+four:
+  home_goals: 1
+  away_goals: 3
+  match: three
+  user: archer
+  
+five:
+  home_goals: 2
+  away_goals: 3
+  match: two
+  user: archer

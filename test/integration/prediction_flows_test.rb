@@ -5,6 +5,7 @@ class PredictionFlowsTest < ActionDispatch::IntegrationTest
     @simon = users(:simon)
     @lana = users(:lana)
     @archer = users(:archer)
+    @malory = users(:malory)
     @future_match = matches(:two)
     @near_future_match = matches(:three)
     @past_match = matches(:one)
@@ -13,7 +14,7 @@ class PredictionFlowsTest < ActionDispatch::IntegrationTest
   end
   
   test "should create prediction" do
-    log_in_as @archer
+    log_in_as @malory
     get league_match_path(@future_match.league, @future_match)
     assert_response :success
     assert_difference 'Prediction.count', 1 do
@@ -21,7 +22,7 @@ class PredictionFlowsTest < ActionDispatch::IntegrationTest
         prediction: {
           league_id: @future_match.league_id,
           match_id: @future_match.id,
-          user_id: @archer.id,
+          user_id: @malory.id,
           home_goals: 0,
           away_goals: 0
         }
