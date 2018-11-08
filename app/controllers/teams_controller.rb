@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-    @matches = @team.matches
+    @matches = @team.past_matches
     @form = @team.form(@matches)
   end
 end
