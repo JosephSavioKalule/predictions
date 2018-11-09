@@ -20,7 +20,9 @@ class UsersController < ApplicationController
             1.hour.from_now, 24.hours.from_now, Prediction.select(:match_id).where("user_id=?",@user.id))
             .order(:match_date_time)
     end
-    @num_predictions = @user.predictions.count
+    @num_predictions = @user.predictions.where("match_id in (?)",
+                       Match.where("match_date_time<updated_at").pluck(:id)).count
+    
     if @num_predictions > 0
       @predictors = @user.predictors
       @total_points = @user.predictors.pluck(:points).sum
