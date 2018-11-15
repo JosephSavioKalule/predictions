@@ -1,32 +1,41 @@
 desc "This task is called by the Heroku scheduler add-on"
 
 task :send_reminders => :environment do
-  @all_users = User.all
-  @users = []
-  @all_users.each do |user|
-    if user.settings_box.receive_email
-      @num_predictions = user.predictions.count
-      if @num_predictions > 0
-        @days_since_last_prediction = (Time.now - user.predictions.last.created_at)/1.days
-        if @days_since_last_prediction > 7
-          @should_send_email = true
+  
+  @upcoming_matches = Match.where("match_date_time > ? and match_date_time < ?", 61.minutes.from_now, 2.days.from_now)
+  if @upcoming_matches.count > 0
+    # there's some matches
+    @all_users = User.all
+    @users = []
+    @all_users.each do |user|
+      if user.settings_box.receive_email
+        @num_predictions = user.predictions.count
+        if @num_predictions > 0
+          @days_since_last_prediction = (Time.now - user.predictions.last.created_at)/1.days
+          if @days_since_last_prediction > 7
+            @should_send_email = true
+          end
+        else
+          if (Time.now - user.created_at)/1.days > 6
+            @should_send_email = true
+          end
         end
-      else
-        if (Time.now - user.created_at)/1.days > 6
-          @should_send_email = true
-        end
+      end
+      
+      if @should_send_email
+        @users.push(user)
       end
     end
     
-    if @should_send_email
-      @users.push(user)
+    puts "Going to send #{@users.count} #{'email'.pluralize(@users.count)}..."
+    @users.each do |u| 
+      u.send_reminder
+      puts "Reminder sent to #{u.email}"
     end
+    puts "Done sending #{@users.count} #{'email'.pluralize(@users.count)}..."
+  else
+    # no matches
+    puts "No upcoming matches. No email"
   end
-  
-  puts "Going to send #{@users.count} #{'email'.pluralize(@users.count)}..."
-  @users.each do |u| 
-    u.send_reminder
-    puts "Reminder sent to #{u.email}"
-  end
-  puts "Done sending #{@users.count} #{'email'.pluralize(@users.count)}..."
+    
 end
