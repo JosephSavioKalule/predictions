@@ -14,12 +14,18 @@ task :send_reminders => :environment do
           @days_since_last_prediction = (Time.now - user.predictions.last.created_at)/1.days
           if @days_since_last_prediction > 7
             @should_send_email = true
+          else
+            @should_send_email = false
           end
         else
           if (Time.now - user.created_at)/1.days > 6
             @should_send_email = true
+          else
+            @should_send_email = false
           end
         end
+      else
+        @should_send_email = false
       end
       
       if @should_send_email
