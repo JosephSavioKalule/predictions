@@ -5,6 +5,10 @@
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name='description' content='<%= yield_meta_tag(:description,
+          'This app enables soccer enthusiasts to test their prediction skills on the game they love!') %>' />
+    <meta name='keywords'
+      content='<%= yield_meta_tag(:keywords, 'Joseph,Kalule,Soccer,Predictions,Account,Rails') %>' />
   <%= csrf_meta_tags %>
   <!--[if lt IE 9]>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
