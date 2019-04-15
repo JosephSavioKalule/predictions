@@ -1,6 +1,15 @@
 <% provide(:title, 'Matches') %>
 
-<h1><%= @league.name %> Matches</h1>
+<h2><%= @league.name %> Matches</h2>
+
+<% if current_user && current_user.admin? %>
+<div class="row">
+  <div class="col-sm-3 offset-sm-9 mb-3">
+    <%= link_to 'New Match', new_league_match_path(@league, @match),
+    class: "btn btn-outline-primary" %>
+  </div>
+</div>
+<% end %>
 
 <div class="row">
   <div class="col-md-6 offset-md-3">

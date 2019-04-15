@@ -48,11 +48,11 @@ class MatchesControllerTest < ActionDispatch::IntegrationTest
     assert_equal @match.match_date_time, @match.reload.match_date_time
   end
   
-  test "admin should see new link on matches page" do
+  test "admin should see new match links on matches page" do
     log_in_as @admin_user
     get league_matches_path(@league)
     assert_response :success
-    assert_select "a[href=?]", new_league_match_path(@league), count: 1
+    assert_select "a[href=?]", new_league_match_path(@league), count: 2
   end
   
   test "other user should not see new link on matches page" do
