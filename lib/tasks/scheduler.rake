@@ -3,7 +3,7 @@ desc "This task is called by the Heroku scheduler add-on"
 task :send_reminders => :environment do
   
   @upcoming_matches = Match.where("match_date_time > ? and match_date_time < ?", 61.minutes.from_now, 2.days.from_now)
-  if @upcoming_matches.count > 0
+  if @upcoming_matches.count > 0 && Date.today.friday?
     # there's some matches
     @all_users = User.all
     @users = []
