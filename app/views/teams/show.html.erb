@@ -3,27 +3,51 @@
 <h1><%= @team.name %></h1>
 
 <div class="row">
-  <div class="col col-md-4 offset-md-4">
-    <% if @team.logo_url %>
-    <p class="center"><%= image_tag(@team.logo_url, width: '160') %></p>
-    <% end %>
-    <p>League: <%= @team.league.name %> <span class="end"><%= link_to 'Details', @team.league %></span></p>
-    <p>Country: <%= @team.league.country.name %></p>
-    <p>Form:
-      <% @form.each do |f| %>
-      <span class="<%= "#{f}" %>"><%= "#{f}" %></span>
-      <% end %>
-    </p>
-    <h4><%= @team.name %>'s matches</h4>
-    <ul>
-      <% @matches.each do |m| %>
-      <li>
-        <%= link_to league_match_path(@team.league_id, m) do %>
-        <%= m.home_team.name %> <%= m.home_goals.nil? ? "vs" : "#{m.home_goals} - #{m.away_goals}" %> <%= m.away_team.name %>
-        | <%= m.match_date_time.strftime('%d/%m/%y') %>
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-body">
+        <% if @team.logo_url %>
+        <p class="center"><%= image_tag(@team.logo_url, width: '160') %></p>
         <% end %>
-      </li>
-      <% end %>
-    </ul>
+        <p>League: <%= @team.league.name %> <span class="end"><%= link_to 'Details', @team.league, class: 'btn btn-outline-dark' %></span></p>
+        <p>Country: <%= @team.league.country.name %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-body">
+        <p>Form:
+          <% @form.each do |f| %>
+          <span class="<%= "#{f}" %>"><%= "#{f}" %></span>
+          <% end %>
+        </p>
+        <h4><%= @team.name %>'s matches</h4>
+        
+        <table class="table table-sm table-hover">
+          <thead>
+            <th>Home</th>
+            <th>Score</th>
+            <th>Away</th>
+            <th>Date</th>
+          </thead>
+          <tbody>
+            <% @matches.each do |m| %>
+            <tr>
+              <td><%= m.home_team.name %></td>
+              <td>
+                <%= link_to league_match_path(@team.league_id, m) do %>
+                <%= m.home_goals.nil? ? "? - ?" : "#{m.home_goals} - #{m.away_goals}" %>
+                <% end %>
+              </td>
+              <td><%= m.away_team.name %></td>
+              <td><%= m.match_date_time.strftime('%d/%m/%y') %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 </div>
