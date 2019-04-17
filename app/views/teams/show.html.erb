@@ -9,7 +9,12 @@
         <% if @team.logo_url %>
         <p class="center"><%= image_tag(@team.logo_url, width: '160') %></p>
         <% end %>
-        <p>League: <%= @team.league.name %> <span class="end"><%= link_to 'Details', @team.league, class: 'btn btn-outline-dark' %></span></p>
+        <p>League: <%= @team.league.name %> 
+        <span class="end">
+          <%= link_to 'Details', @team.league, class: 'btn btn-outline-dark' %>
+          <%= link_to 'Rankings', "#{league_path}/rankings", class: 'btn btn-outline-primary' %>
+        </span>
+        </p>
         <p>Country: <%= @team.league.country.name %></p>
       </div>
     </div>
