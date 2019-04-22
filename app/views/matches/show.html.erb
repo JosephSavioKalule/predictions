@@ -53,10 +53,11 @@
             <% end %>
           </li>
         </ul>
-        <% end %>
         
-      </div>
-      <div class="card-body">
+        <% elsif DateTime.now < @match.match_date_time + 110.minutes %>
+          <!-- Ongoing match 110 = 45+15+45+5 -->
+          <p class="alert alert-success">The match is in progress</p>
+        <% end %>
         
         <% if !@prediction.nil? %>
           <h5>My prediction</h5>
