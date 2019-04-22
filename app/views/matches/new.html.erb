@@ -5,18 +5,7 @@
     <h4>New Match</h4>
     
     <%= form_for(@match, url: league_matches_path) do |f| %>
-      <% if @match.errors.any? %>
-        <div id="error_explanation">
-          <div class="alert alert-danger">
-            The form contains <%= pluralize(@match.errors.count, "error") %>.
-          </div>
-          <ul>
-          <% @match.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <%= render 'form_errors' %>
       
       <% teams_array = Team.where("league_id=?", @league.id).map { |team| [team.name, team.id] } %>
       <%= f.label :home_team %>

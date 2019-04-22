@@ -2,23 +2,11 @@
 
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <h4>Edit Match</h4>
+    <h4>Editing <%= "#{@match.home_team.name} vs #{@match.away_team.name}" %></h4>
     
     <%= form_for(@match, url: league_match_path) do |f| %>
-      <% if @match.errors.any? %>
-        <div id="error_explanation">
-          <div class="alert alert-danger">
-            The form contains <%= pluralize(@match.errors.count, "error") %>.
-          </div>
-          <ul>
-          <% @match.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <%= render 'form_errors' %>
       
-      <h5>Editing <%= "#{@match.home_team.name} vs #{@match.away_team.name}" %></h5>
       
       <%= f.label :match_date_time %>
       <%= f.text_field :match_date_time, class: "form-control" %>
