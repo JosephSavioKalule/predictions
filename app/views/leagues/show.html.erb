@@ -1,12 +1,14 @@
 <% provide(:title, @league.name) %>
 
 <div class="row">
-  <div class="col-md-6 offset-md-3">
+  <div class="col-md-4">
     <div class="center">
       <img src="<%= @league.logo_url %>" alt="<%= @league.name %>" width="256px">
       <p>Country: <%= @league.country.name %></p>
     </div>
-
+  </div>
+  
+  <div class="col-md-4">
     <h3>Recent Matches:</h3>
     
     <ul>
@@ -28,7 +30,9 @@
     <% if logged_in? %>
       <p><%= link_to 'Rankings', "#{league_path}/rankings", class: 'btn btn-outline-primary' %></p>
     <% end %>
-    
+  </div>
+  
+  <div class="col-md-4">
     <h3>Teams:</h3>
     
     <ul>
@@ -37,4 +41,5 @@
       <% end %>
     </ul>
   </div>
+  
 </div>
