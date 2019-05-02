@@ -2,9 +2,16 @@
 
 <div class="row">
   <div class="col-md-4">
-    <div class="center">
-      <img src="<%= @league.logo_url %>" alt="<%= @league.name %>" width="256px">
-      <p>Country: <%= @league.country.name %></p>
+    <div class="card m-3">
+      <div class="card-body">
+        
+        <h3 class="card-title"><%= @league.name %></h3>
+        <div class="center">
+          <img src="<%= @league.logo_url %>" alt="<%= @league.name %>" width="256px">
+          <p>Country: <%= @league.country.name %></p>
+        </div>
+        
+      </div>
     </div>
   </div>
   
@@ -15,7 +22,7 @@
         
         <ul>
           <% @recent_matches.each do |m| %>
-          <li><%= m.match_date_time.strftime("%d/%m/%Y at %I:%M%p (%Z)") %>
+          <li><%= m.match_date_time.strftime("%d/%m/%Y") %>
           <%= m.home_team.name %>
           <% if m.home_goals && m.away_goals %>
             <%= "#{m.home_goals} - #{m.away_goals}" %>
@@ -32,18 +39,24 @@
         <% if logged_in? %>
           <p><%= link_to 'Rankings', "#{league_path}/rankings", class: 'btn btn-outline-primary' %></p>
         <% end %>
+        
       </div>
     </div>
   </div>
   
   <div class="col-md-4">
-    <h3>Teams:</h3>
-    
-    <ul>
-      <% @teams.each do |team| %>
-      <li><%= link_to team.name, team %></li>
-      <% end %>
-    </ul>
+    <div class="card m-3">
+      <div class="card-body">
+        <h3 class="card-title">Teams:</h3>
+        
+        <ul>
+          <% @teams.each do |team| %>
+          <li><%= link_to team.name, team %></li>
+          <% end %>
+        </ul>
+        
+      </div>
+    </div>
   </div>
   
 </div>
