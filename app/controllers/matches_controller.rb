@@ -49,7 +49,6 @@ class MatchesController < ApplicationController
     if @match.match_date_time < 2.hours.ago
       # match ended
       if @match.update_attributes(match_params)
-        flash[:success] = "Match updated"
         # update predictor points
         # 1 point for everyone:
         # Prediction.where("match_id=?", @match.id)
@@ -80,6 +79,8 @@ class MatchesController < ApplicationController
         @match.predictions.where("home_goals = ? AND away_goals = ?", @match.home_goals, @match.away_goals).each do |prediction|
           prediction.user.predictors.where("league_id=?", @match.league_id).first.increment!(:points, 2)
         end
+        
+        flash[:success] = "Match updated. There were #{@match.predictions.count} predictions."
           
         redirect_to league_match_path(@match.league, @match)
       else
