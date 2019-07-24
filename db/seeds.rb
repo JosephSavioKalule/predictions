@@ -112,5 +112,5 @@ teams = Team.create!([
   { name: 'SPAL 2013', league: leagues[3] },
   { name: 'SSC Napoli', league: leagues[3] },
   { name: 'Torino', league: leagues[3] },
-  { name: 'Udinese', league: leagues[3] },
+  { name: 'Udinese', league: leagues[3] }
   ])
