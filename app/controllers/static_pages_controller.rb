@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   before_action :logged_in_user, only: [:settings]
   
   def home
-    @leagues = League.all.order(:id)
+    @leagues = Season.last.leagues
     @upcoming_matches = Match.where("match_date_time < ? and match_date_time > ?",
                         3.days.from_now, 30.seconds.from_now).order(:match_date_time).limit(10)
     if logged_in?

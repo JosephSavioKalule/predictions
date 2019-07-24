@@ -1,5 +1,3 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   name: Premier League
   country: one
@@ -19,3 +17,27 @@ four:
   name: La Liga
   country: two
   season: one
+  
+five:
+  name: Premier League
+  country: one
+  season: two
+  logo_url: url
+
+six:
+  name: La Liga
+  country: two
+  season: two
+  logo_url: url
+
+seven:
+  name: La Liga
+  country: two
+  season: two
+  logo_url: url
+
+eight:
+  name: La Liga
+  country: two
+  season: two
+  logo_url: url

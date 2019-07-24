@@ -43,7 +43,8 @@
 
         <% if logged_in? %>
         
-          <% for i in 0..3 %>
+          <% i=0 %>
+          <% while i < @leagues.count %>
         
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
@@ -53,6 +54,7 @@
             </div>
             <div class="card-footer">
               <%= link_to 'Rankings', "#{league_path(@leagues[i])}/rankings", class: 'btn btn-primary' %>
+              <% i += 1 %>
             </div>
           </div>
         </div>
@@ -60,10 +62,11 @@
           <% end %>
         
         <% else %>
-        
+          <% if @leagues.count > 3 %>
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
             <img class="card-img-top" height="160px" src="<%= @leagues[0].logo_url %>" alt="EPL">
+            
             <div class="card-body">
               <h4 class="card-title">Premier League</h4>
               <p class="card-text">Will Manchester City be able to retain the title this season?</p>
@@ -112,7 +115,7 @@
             </div>
           </div>
         </div>
-        
+          <% end %>
         <% end %>
         
         <% if @upcoming_matches.any? %>

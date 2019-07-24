@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.all.order(:name)
+    @teams = Team.where("league_id>4").order(:name)
   end
 
   def show

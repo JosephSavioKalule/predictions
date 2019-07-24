@@ -2,7 +2,7 @@ class LeaguesController < ApplicationController
   before_action :logged_in_user, only: [:rankings]
   
   def index
-    @leagues = League.all
+    @leagues = Season.find(2).leagues
   end
 
   def show
