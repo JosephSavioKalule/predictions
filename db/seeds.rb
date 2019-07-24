@@ -105,7 +105,7 @@ teams = Team.create!([
   { name: 'Juventus', league: leagues[3] },
   { name: 'Lazio', league: leagues[3] },
   { name: 'Lecce', league: leagues[3] },
-  { name: 'Parma Calcio 1913', league: leagues[3] }
+  { name: 'Parma Calcio 1913', league: leagues[3] },
   { name: 'Roma', league: leagues[3] },
   { name: 'Sampdoria', league: leagues[3] },
   { name: 'Sassuolo', league: leagues[3] },
