@@ -1,0 +1,13 @@
+<%= form_for(@team, url: team_path) do |f| %>
+  
+  <%= render 'form_errors' %>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+  
+  <%= f.label :logo_url %>
+  <%= f.text_field :logo_url, class: "form-control" %>
+  
+  <%= f.submit "Save changes", class: "btn btn-outline-success" %>
+      
+<% end %>

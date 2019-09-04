@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   
   get '/leagues/:id/rankings', to: 'leagues#rankings'
   
-  resources :teams, only: [:index, :show]
+  resources :teams, only: [:index, :show, :edit, :update]
   
 
   # The priority is based upon order of creation: first created -> highest priority.
