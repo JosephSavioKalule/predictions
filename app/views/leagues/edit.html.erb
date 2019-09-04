@@ -1,0 +1,12 @@
+<% provide(:title, 'Edit League') %>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h4>Editing <%= "#{@league.name}" %></h4>
+    
+    <%= render 'form' %>
+    
+    <%= link_to "Cancel", league_path(@league), class: "btn btn-outline-dark" %>
+    
+  </div>
+</div>

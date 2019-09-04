@@ -14,6 +14,12 @@
         
         <% if logged_in? %>
           <p><%= link_to 'Rankings', "#{league_path}/rankings", class: 'btn btn-outline-primary' %></p>
+          
+          <% if current_user.admin? %>
+          <hr>
+          <p><%= link_to 'Edit', edit_league_path, class: 'btn btn-outline-primary' %></p>
+          <% end %>
+          
         <% end %>
         
       </div>

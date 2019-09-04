@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   post 'profile/delete',     to: 'users#delete'
   
   resources :seasons, only: [:index, :show]
-  resources :leagues, only: [:index, :show] do
+  resources :leagues, only: [:index, :show, :edit, :update] do
     resources :matches, only: [:index, :show, :edit, :update, :new, :create] do
       resources :predictions
     end

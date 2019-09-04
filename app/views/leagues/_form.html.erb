@@ -1,0 +1,16 @@
+<%= form_for(@league, url: league_path) do |f| %>
+  
+  <%= render 'form_errors' %>
+  
+  <%= f.label :country %>
+  <%= f.text_field :country, class: "form-control", disabled: true, value: @league.country.name %>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+  
+  <%= f.label :logo_url %>
+  <%= f.text_field :logo_url, class: "form-control" %>
+  
+  <%= f.submit "Save changes", class: "btn btn-outline-success" %>
+      
+<% end %>
