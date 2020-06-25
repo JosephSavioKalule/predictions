@@ -4,13 +4,13 @@
 
 <div class="row">
 <% @leagues.each do |league| %>
-<div class="col-md-3 col-sm-6">
-  <div class="card" style="margin-bottom:24px">
-    
+<div class="col-lg-3 col-md-6">
+    <div class="card" style="margin-bottom:24px">
+
     <% if league.logo_url %>
     <img class="card-img-top p-2" height="144px" src="<%= league.logo_url %>">
     <% end %>
-    
+
     <div class="card-body">
       <p><%= league.name %> <span class="badge badge-dark end"><%= league.country.name %></span></p>
     </div>
