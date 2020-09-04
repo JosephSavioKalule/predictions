@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 
-gem 'rails',           '5.1.7'
+gem 'rails',           '5.2.4.3'
 gem 'bcrypt',          '3.1.12'
 gem 'puma',            '3.12.6'
 gem 'sass-rails',      '5.0.6'
-gem 'will_paginate',           '3.1.6'
+gem 'will_paginate',           '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
 # Add Twitter Bootstrap
 gem 'bootstrap',       '4.3.1'
