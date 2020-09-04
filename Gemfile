@@ -3,7 +3,7 @@ ruby '2.6.3'
 
 gem 'rails',           '5.1.7'
 gem 'bcrypt',          '3.1.12'
-gem 'puma',            '3.12.2'
+gem 'puma',            '3.12.6'
 gem 'sass-rails',      '5.0.6'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
