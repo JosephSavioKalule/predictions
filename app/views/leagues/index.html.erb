@@ -1,6 +1,7 @@
 <% provide(:title, 'Leagues') %>
 
 <h1>Leagues</h1>
+<h2>Season: <%= "#{@season.start_year} - #{@season.start_year+1}" %></h2>
 
 <div class="row">
 <% @leagues.each do |league| %>
