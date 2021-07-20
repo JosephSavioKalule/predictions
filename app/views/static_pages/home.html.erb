@@ -2,7 +2,7 @@
     <div class="card">
       <div class="card-body">
         <%= form_for(:session, url: login_path, html: {class: "form-inline", style: "float:right" }) do |f| %>
-    
+
           <%= f.label :email, class: 'mr-2' %>
           <%= f.email_field :email, class: 'form-control mb-2 mr-sm-2' %>
 
@@ -25,11 +25,11 @@
 
 <!-- Jumbotron Header -->
       <header class="jumbotron my-4" style="background-image:url('https://www.customwallpaper.net.au/wp-content/uploads/2016/07/Soccer-ball-in-goal-1024x543.jpeg');background-size:cover;background-repeat:no-repeat;padding-top:1rem">
-        
-    
-        
+
+
+
         <h1>Soccer Predictions</h1>
-        <h2>2019 - 2020 season</h2>
+        <h2><%= "#{@season.start_year} - #{@season.start_year+1}" %> season</h2>
         <% if logged_in? %>
           <h3 class="header"><%= "Hello, #{@user.name}" %></h3>
         <% else %>
@@ -42,17 +42,17 @@
       <div class="row text-center">
 
         <% if logged_in? %>
-        
+
           <% i=0 %>
           <% while i < @leagues.count %>
-        
+
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
-            
+
             <% if @leagues[i].logo_url %>
             <img class="card-img-top p-2" height="160px" src="<%= @leagues[i].logo_url %>" alt="<%= @leagues[i].name %>">
             <% end %>
-            
+
             <div class="card-body">
               <h4 class="card-title"><%= @leagues[i].name %></h4>
               <p class="card-text">See how you rank</p>
@@ -63,15 +63,15 @@
             </div>
           </div>
         </div>
-        
+
           <% end %>
-        
+
         <% else %>
           <% if @leagues.count > 3 %>
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
             <img class="card-img-top p-2" height="160px" src="<%= @leagues[0].logo_url %>" alt="EPL">
-            
+
             <div class="card-body">
               <h4 class="card-title">Premier League</h4>
               <p class="card-text">Will Manchester City be able to retain the title this season?</p>
@@ -122,7 +122,7 @@
         </div>
           <% end %>
         <% end %>
-        
+
         <% if @upcoming_matches.any? %>
         <div class="col-lg-6 offset-lg-3">
           <div class="card">
