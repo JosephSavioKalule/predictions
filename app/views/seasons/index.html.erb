@@ -6,7 +6,8 @@
 <% @seasons.each do |season| %>
 <div class="card">
   <div class="card-body">
-    <%= "#{season.start_year} - #{season.start_year+1}" %>
+    <p><%= "#{season.start_year} - #{season.start_year+1}" %></p>
+    <p><%= link_to "Show", season_path(season) %></p>
   </div>
 </div>
 <% end %>

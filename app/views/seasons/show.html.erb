@@ -1,2 +1,26 @@
-<h1>Seasons#show</h1>
-<p>Find me in app/views/seasons/show.html.erb</p>
+<% provide(:title, "#{@season.start_year} - #{@season.start_year+1}") %>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card m-3">
+      <div class="card-body">
+        <h3 class="card-title"><%= "#{@season.start_year} - #{@season.start_year+1}" %></h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card m-3">
+      <div class="card-body">
+        <h3 class="card-title">Leagues</h3>
+
+        <ul>
+          <% @leagues.each do |league| %>
+          <li><%= link_to league.name, league %></li>
+          <% end %>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
