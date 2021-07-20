@@ -4,7 +4,7 @@ class LeaguesController < ApplicationController
 
   def index
     @season = Season.last
-    @leagues = @season.leagues
+    @leagues = @season.leagues.order(:id)
   end
 
   def show
