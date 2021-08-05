@@ -11,7 +11,7 @@ def get_rails_league_id(api_id)
     "61" => "40",
     "135" => "41"
   }
-  return ids_hash[api_id]
+  return ids_hash[api_id.to_s]
 end
 
 def get_rails_team_id(api_id)
@@ -105,7 +105,7 @@ def get_rails_team_id(api_id)
     "517" => "259"
     # End Serie A
   }
-  return ids_hash[api_id]
+  return ids_hash[api_id.to_s]
 end
 
 task :getfixtures => :environment do
