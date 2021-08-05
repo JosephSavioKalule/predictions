@@ -11,7 +11,7 @@ def get_rails_league_id(api_id)
     "61" => "40",
     "135" => "41"
   }
-  return ""
+  return ids_hash[api_id]
 end
 
 def get_rails_team_id(api_id)
