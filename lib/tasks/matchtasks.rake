@@ -1,58 +1,5 @@
 desc "This task is called by the Heroku scheduler add-on"
 
-task :getfixtures => :environment do
-  require 'uri'
-  require 'net/http'
-  require 'openssl'
-
-  # url = URI("https://v3.football.api-sports.io/leagues?type=league&season=2021&country=France")
-  # url = URI("https://v3.football.api-sports.io/fixtures/rounds?season=2021&league=61")
-  # url = URI("https://v3.football.api-sports.io/fixtures?date=2021-08-21&season=2021&league=135")
-  # url = URI("https://v3.football.api-sports.io/standings?season=2021&league=135")
-
-  leagues = [39, 140, 61, 135]
-  today = Date.today
-  tomo = Date.tomorrow.strftime("%Y-%m-%d")
-  day_after_tomo = (Date.tomorrow + 1.day).strftime("%Y-%m-%d")
-  day2_after_tomo = (Date.tomorrow + 2.days).strftime("%Y-%m-%d")
-  url = ""
-  leagues.each do |league|
-    url = URI("https://v3.football.api-sports.io/fixtures?date="+tomo+"&season=2021&league=" + league.to_s)
-
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    request = Net::HTTP::Get.new(url)
-    request["x-rapidapi-host"] = 'v3.football.api-sports.io'
-    request["x-rapidapi-key"] = ENV['API_FOOTBALL_KEY']
-
-    response = http.request(request)
-    puts response.read_body
-    @obj = JSON.parse(response.read_body, object_class: OpenStruct)
-    @fixtures = @obj.response
-    #puts "fixtures count = " + @fixtures.size.to_s
-    #puts get_rails_team_id(42.to_s)
-
-    @my_league = League.find(get_rails_league_id(league))
-    @fixtures.each do |fixture|
-      @match = Match.new
-      @match.league_id = @my_league.id
-      @match.home_team_id = get_rails_team_id(fixture.teams.home.id)
-      @match.away_team_id = get_rails_team_id(fixture.teams.away.id)
-      @match.home_goals = nil
-      @match.away_goals = nil
-      @match.match_date_time = DateTime.strptime(fixture.timestamp.to_s, '%s').in_time_zone("Paris")
-      if Match.where("home_team_id=? and away_team_id=? and match_date_time > ?",
-        @match.home_team_id, @match.away_team_id, DateTime.now).count == 0
-        # create match
-        @match.save
-      end
-    end
-  end
-
-end
-
 def get_rails_league_id(api_id)
   #  39 - Premier League
   # 140 - La Liga
@@ -160,6 +107,60 @@ def get_rails_team_id(api_id)
   }
   return ids_hash[api_id]
 end
+
+task :getfixtures => :environment do
+  require 'uri'
+  require 'net/http'
+  require 'openssl'
+
+  # url = URI("https://v3.football.api-sports.io/leagues?type=league&season=2021&country=France")
+  # url = URI("https://v3.football.api-sports.io/fixtures/rounds?season=2021&league=61")
+  # url = URI("https://v3.football.api-sports.io/fixtures?date=2021-08-21&season=2021&league=135")
+  # url = URI("https://v3.football.api-sports.io/standings?season=2021&league=135")
+
+  leagues = [39, 140, 61, 135]
+  today = Date.today
+  tomo = Date.tomorrow.strftime("%Y-%m-%d")
+  day_after_tomo = (Date.tomorrow + 1.day).strftime("%Y-%m-%d")
+  day2_after_tomo = (Date.tomorrow + 2.days).strftime("%Y-%m-%d")
+  url = ""
+  leagues.each do |league|
+    url = URI("https://v3.football.api-sports.io/fixtures?date="+tomo+"&season=2021&league=" + league.to_s)
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(url)
+    request["x-rapidapi-host"] = 'v3.football.api-sports.io'
+    request["x-rapidapi-key"] = ENV['API_FOOTBALL_KEY']
+
+    response = http.request(request)
+    puts response.read_body
+    @obj = JSON.parse(response.read_body, object_class: OpenStruct)
+    @fixtures = @obj.response
+    #puts "fixtures count = " + @fixtures.size.to_s
+    #puts get_rails_team_id(42.to_s)
+
+    @my_league = League.find(get_rails_league_id(league))
+    @fixtures.each do |fixture|
+      @match = Match.new
+      @match.league_id = @my_league.id
+      @match.home_team_id = get_rails_team_id(fixture.teams.home.id)
+      @match.away_team_id = get_rails_team_id(fixture.teams.away.id)
+      @match.home_goals = nil
+      @match.away_goals = nil
+      @match.match_date_time = DateTime.strptime(fixture.timestamp.to_s, '%s').in_time_zone("Paris")
+      if Match.where("home_team_id=? and away_team_id=? and match_date_time > ?",
+        @match.home_team_id, @match.away_team_id, DateTime.now).count == 0
+        # create match
+        @match.save
+      end
+    end
+  end
+
+end
+
 
 
 ## Leagues ##
