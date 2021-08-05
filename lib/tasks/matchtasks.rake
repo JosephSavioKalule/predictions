@@ -150,7 +150,7 @@ task :getfixtures => :environment do
       @match.away_team_id = get_rails_team_id(fixture.teams.away.id)
       @match.home_goals = nil
       @match.away_goals = nil
-      @match.match_date_time = DateTime.strptime(fixture.timestamp.to_s, '%s').in_time_zone("Paris")
+      @match.match_date_time = DateTime.strptime(fixture.fixture.timestamp.to_s, '%s').in_time_zone("Paris")
       if Match.where("home_team_id=? and away_team_id=? and match_date_time > ?",
         @match.home_team_id, @match.away_team_id, DateTime.now).count == 0
         # create match
