@@ -276,7 +276,7 @@ task :get_standings => :environment do
   #leagues = [39, 140, 61, 135]
   leagues.each do |league|
     @my_league = League.find(get_rails_league_id(league).to_i)
-    @nb_recent_matches = @my_league.matches.where("match_date_time < ? and match_date_time > ?",DateTime.now - 2.days, DateTime.now - 5.days).count
+    @nb_recent_matches = @my_league.matches.where("match_date_time < ? and match_date_time > ?",DateTime.now - 2.hours, DateTime.now - 5.hours).count
 
     if @nb_recent_matches > 0
       # get fixutres for league
