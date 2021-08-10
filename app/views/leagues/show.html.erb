@@ -61,7 +61,7 @@
         <% @teams.each do |team| %>
         <tr>
           <td><%= team.league_position %></td>
-          <td><%= team.name %></td>
+          <td><%= link_to team.name, team_path(team) %></td>
           <td><%= team.league_points %></td>
         </tr>
         <% end %>
