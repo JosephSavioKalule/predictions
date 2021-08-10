@@ -1,4 +1,7 @@
-desc "This task is called by the Heroku scheduler add-on"
+require 'uri'
+require 'net/http'
+require 'openssl'
+
 
 def get_rails_league_id(api_id)
   #  39 - Premier League
@@ -108,17 +111,20 @@ def get_rails_team_id(api_id)
   return ids_hash[api_id.to_s]
 end
 
+leagues = [39, 140, 61, 135]
+
+desc "This task is called by the Heroku scheduler add-on"
 task :getfixtures => :environment do
-  require 'uri'
-  require 'net/http'
-  require 'openssl'
+  #require 'uri'
+  #require 'net/http'
+  #require 'openssl'
 
   # url = URI("https://v3.football.api-sports.io/leagues?type=league&season=2021&country=France")
   # url = URI("https://v3.football.api-sports.io/fixtures/rounds?season=2021&league=61")
   # url = URI("https://v3.football.api-sports.io/fixtures?date=2021-08-21&season=2021&league=135")
   # url = URI("https://v3.football.api-sports.io/standings?season=2021&league=135")
 
-  leagues = [39, 140, 61, 135]
+  #leagues = [39, 140, 61, 135]
   today = Date.today
   tomo = Date.tomorrow.strftime("%Y-%m-%d")
   day_after_tomo = (Date.tomorrow + 1.day).strftime("%Y-%m-%d")
@@ -264,3 +270,37 @@ end
 # Verona 504
 
 # [[259, "Venezia"], [258, "Udinese"], [257, "Torino"], [256, "Spezia"], [255, "Sassuolo"], [254, "Sampdoria"], [253, "Salernitana"], [252, "Roma"], [251, "Napoli"], [250, "Lazio"], [249, "Juventus"], [248, "Inter"], [247, "Hellas Verona"], [246, "Genoa"], [245, "Fiorentina"], [244, "Empoli"], [243, "Cagliari"], [242, "Bologna"], [241, "Atalanta"], [240, "AC Milan"]]
+
+task :get_standings => :environment do
+  # do something
+  #leagues = [39, 140, 61, 135]
+  leagues.each do |league|
+    @my_league = League.find(get_rails_league_id(league).to_i)
+    @nb_recent_matches = @my_league.matches.where("match_date_time < ? and match_date_time > ?",DateTime.now - 2.days, DateTime.now - 5.days).count
+
+    if @nb_recent_matches > 0
+      # get fixutres for league
+      url = URI("https://v3.football.api-sports.io/standings?season=2021&league=" + league.to_s)
+
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      request = Net::HTTP::Get.new(url)
+      request["x-rapidapi-host"] = 'v3.football.api-sports.io'
+      request["x-rapidapi-key"] = ENV['API_FOOTBALL_KEY']
+
+      response = http.request(request)
+      #puts response.read_body
+      @obj = JSON.parse(response.read_body, object_class: OpenStruct)
+      @standings = @obj.response[0].league.standings[0]
+      #puts "size = " + @standings.size.to_s
+      @standings.each do |s|
+        @rails_team_id = get_rails_team_id(s.team.id)
+        #puts s.rank.to_s + ': ' + s.team.name + '(' + s.points.to_s + ')'
+        @rails_team = Team.find(@rails_team_id)
+        @rails_team.update_columns(league_position: s.rank, league_points: s.points)
+      end
+    end
+  end
+end
