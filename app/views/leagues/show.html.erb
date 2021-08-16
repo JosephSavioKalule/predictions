@@ -31,19 +31,23 @@
       <div class="card-body">
         <h3 class="card-title">Recent Matches:</h3>
 
-        <ul>
-          <% @recent_matches.each do |m| %>
-          <li><%= m.match_date_time.strftime("%d/%m/%Y") %>
-          <%= m.home_team.name %>
-          <% if m.home_goals && m.away_goals %>
-            <%= "#{m.home_goals} - #{m.away_goals}" %>
-          <% else %>
-          vs
-          <% end %>
-          <%= m.away_team.name %>
-          </li>
-          <% end %>
-        </ul>
+        <table class="table table-sm table-hover table-striped">
+          <tbody>
+            <% @recent_matches.each do |m| %>
+            <tr class="clickable" data-link="<%= league_match_path(m.league, m) %>">
+              <td class="home"><%= m.home_team.name %></td>
+              <td class="score">
+                <% if m.home_goals && m.away_goals %>
+                  <%= "#{m.home_goals} - #{m.away_goals}" %>
+                <% else %>
+                vs
+                <% end %>
+              </td>
+              <td class="away"><%= m.away_team.name %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
 
         <p><%= link_to 'All matches', league_matches_path(@league) %></p>
 

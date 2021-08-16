@@ -44,6 +44,9 @@ table {
   .score {
     text-align: center;
   }
+  tr.clickable {
+    cursor: pointer;
+  }
 }
 
 
@@ -178,7 +181,7 @@ input {
 }
 
 .field_with_errors {
-  
+
   .form-control {
     @extend .is-invalid;
   }
