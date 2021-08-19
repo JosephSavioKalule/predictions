@@ -5,10 +5,14 @@
     <div class="card mb-3">
       <div class="card-header">
         <% if @match.home_team.logo_url %>
+        <span class="clickable" data-link="<%= team_path(@match.home_team) %>">
         <%= image_tag(@match.home_team.logo_url, width: '100', height: '100', style:'margin:1em') %>
+        </span>
         <% end %>
         <% if @match.away_team.logo_url %>
+        <span class="clickable" data-link="<%= team_path(@match.away_team) %>">
         <%= image_tag(@match.away_team.logo_url, width: '100', height: '100', style:'float:right;margin:1em') %>
+        </span>
         <% end %>
         <h4 class="card-title center">
 
