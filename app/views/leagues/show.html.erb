@@ -29,7 +29,30 @@
   <div class="col-lg-6">
     <div class="card m-3">
       <div class="card-body">
-        <h3 class="card-title">Recent Matches:</h3>
+        <% if @future_matches.any? %>
+        <h4 class="card-title">Upcoming Matches:</h4>
+
+        <table class="table table-sm table-hover table-striped">
+          <tbody>
+            <% @future_matches.each do |m| %>
+            <tr class="clickable" data-link="<%= league_match_path(m.league, m) %>">
+              <td class="home"><%= m.home_team.name %></td>
+              <td class="score">
+                <% if m.home_goals && m.away_goals %>
+                  <%= "#{m.home_goals} - #{m.away_goals}" %>
+                <% else %>
+                vs
+                <% end %>
+              </td>
+              <td class="away"><%= m.away_team.name %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
+
+        <% if @recent_matches.any? %>
+        <h4 class="card-title">Recent Matches:</h4>
 
         <table class="table table-sm table-hover table-striped">
           <tbody>
@@ -48,6 +71,7 @@
             <% end %>
           </tbody>
         </table>
+        <% end %>
 
         <p><%= link_to 'All matches', league_matches_path(@league) %></p>
 
