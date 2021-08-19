@@ -9,7 +9,7 @@
         <% if @team.logo_url %>
         <p class="center"><%= image_tag(@team.logo_url, width: '160') %></p>
         <% end %>
-        <p>League: <%= @team.league.name %> 
+        <p>League: <%= @team.league.name %>
         <span class="end">
           <%= link_to 'Details', @team.league, class: 'btn btn-outline-dark' %>
           <%= link_to 'Rankings', "#{league_path(@team.league)}/rankings", class: 'btn btn-outline-primary' %>
@@ -17,16 +17,16 @@
         </p>
         <p>Country: <%= @team.league.country.name %></p>
         <% if logged_in? && current_user.admin? %>
-        
+
         <p>
           <%= link_to 'Edit', edit_team_path, class: 'btn btn-outline-primary' %>
         </p>
-        
+
         <% end %>
       </div>
     </div>
   </div>
-  
+
   <div class="col-md-6 mb-3">
     <div class="card">
       <div class="card-body">
@@ -36,7 +36,10 @@
           <% end %>
         </p>
         <h4><%= @team.name %>'s matches</h4>
-        
+
+        <% if @ongoing_matches.any? %>
+        <h5>Live</h5>
+
         <table class="table table-sm table-hover">
           <thead>
             <th>Home</th>
@@ -45,7 +48,34 @@
             <th>Date</th>
           </thead>
           <tbody>
-            <% @matches.each do |m| %>
+            <% @ongoing_matches.each do |m| %>
+            <tr>
+              <td><%= m.home_team.name %></td>
+              <td>
+                <%= link_to league_match_path(@team.league_id, m) do %>
+                <%= m.home_goals.nil? ? "? - ?" : "#{m.home_goals} - #{m.away_goals}" %>
+                <% end %>
+              </td>
+              <td><%= m.away_team.name %></td>
+              <td>Now</td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
+
+        <% if @future_matches.any? %>
+        <h5>Upcoming</h5>
+
+        <table class="table table-sm table-hover">
+          <thead>
+            <th>Home</th>
+            <th>Score</th>
+            <th>Away</th>
+            <th>Date</th>
+          </thead>
+          <tbody>
+            <% @future_matches.each do |m| %>
             <tr>
               <td><%= m.home_team.name %></td>
               <td>
@@ -59,6 +89,35 @@
             <% end %>
           </tbody>
         </table>
+        <% end %>
+
+        <% if @past_matches.any? %>
+        <h5>Past</h5>
+
+        <table class="table table-sm table-hover">
+          <thead>
+            <th>Home</th>
+            <th>Score</th>
+            <th>Away</th>
+            <th>Date</th>
+          </thead>
+          <tbody>
+            <% @past_matches.each do |m| %>
+            <tr>
+              <td><%= m.home_team.name %></td>
+              <td>
+                <%= link_to league_match_path(@team.league_id, m) do %>
+                <%= m.home_goals.nil? ? "? - ?" : "#{m.home_goals} - #{m.away_goals}" %>
+                <% end %>
+              </td>
+              <td><%= m.away_team.name %></td>
+              <td><%= m.match_date_time.strftime('%d/%m/%y') %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
+
       </div>
     </div>
 
