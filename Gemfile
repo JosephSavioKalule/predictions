@@ -16,7 +16,7 @@ gem 'turbolinks',      '5.0.1'
 gem 'jbuilder',        '2.7.0'
 
 # JavaScript runtime
-gem "mini_racer"
+gem "mini_racer",      '0.4.0'
 
 group :development, :test do
   gem 'sqlite3',       '1.3.13'
