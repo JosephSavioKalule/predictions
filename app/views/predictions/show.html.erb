@@ -30,7 +30,7 @@
       <%= link_to 'Modify', edit_user_prediction_path(@user, @prediction),
                   class: 'btn btn-outline-primary' %> |
       <%= link_to 'Delete', user_prediction_path(@user, @prediction),
-                  method: :delete, class: 'btn btn-outline-danger' %>
+      method: :delete, class: 'btn btn-outline-danger', data: {confirm: 'Are you sure?'} %>
     </p>
     <% end %>
     <hr>

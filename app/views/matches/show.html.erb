@@ -93,6 +93,7 @@
 
     <% if current_user && current_user.admin? && !@match.home_goals %>
       <%= link_to "Edit match", edit_league_match_path(@match.league, @match), class:'btn btn-outline-primary' %>
+      <%= link_to "Delete match", league_match_path(@match.league, @match), method: :delete, class:'btn btn-outline-danger', data: {confirm: 'Are you sure?'} %>
     <% end %>
 
     <%= link_to "#{@match.league.name} matches", league_matches_path(@match.league), class:'btn btn-outline-dark' %>

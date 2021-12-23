@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   
   resources :seasons, only: [:index, :show]
   resources :leagues, only: [:index, :show, :edit, :update] do
-    resources :matches, only: [:index, :show, :edit, :update, :new, :create] do
+    resources :matches do
       resources :predictions
     end
   end

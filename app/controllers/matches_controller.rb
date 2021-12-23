@@ -1,7 +1,7 @@
 class MatchesController < ApplicationController
-  before_action :find_match, only: [:show, :edit, :update]
-  before_action :logged_in_user, only: [:edit, :new, :update, :create]
-  before_action :admin_user, only: [:edit, :new, :update, :create]
+  before_action :find_match, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:edit, :new, :update, :create, :destroy]
+  before_action :admin_user, only: [:edit, :new, :update, :create, :destroy]
   before_action :not_yet_finalized, only: [:edit, :update]
   
   def index
@@ -96,7 +96,20 @@ class MatchesController < ApplicationController
       end
     end
   end
-  
+
+  def destroy
+    league = @match.league
+    # remove all predictions
+    predictions = @match.predictions
+    predictions.each do |prediction|
+      prediction.delete
+    end
+    # now delete match
+    @match.destroy
+    flash[:success] = "Match has been deleted"
+    redirect_to league_matches_path(league)
+  end
+
   private
     
     def find_match

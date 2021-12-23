@@ -75,4 +75,20 @@ class MatchesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "a[href=?]", edit_league_match_path(@match.league, @match), count: 0
   end
+
+  test "admin should be able to delete match" do
+    log_in_as @admin_user
+    @league = @match.league
+    assert_difference 'Match.count', -1 do
+      delete league_match_path(@league, @match)
+    end
+    assert_redirected_to league_matches_path(@league)
+  end
+
+  test "other user should not be able to delete match" do
+    log_in_as @other_user
+    assert_no_difference 'Match.count' do
+      delete league_match_path(@match.league, @match)
+    end
+  end
 end
