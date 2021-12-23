@@ -3,15 +3,18 @@
 
 if Rails.env.development?
   # seed development data here
+  season = Season.find(2)
 end
 
 if Rails.env.production?
   # seed production data here
+  season = Season.find(35)
 end
 
 # both environments
 
-season = Season.find(35) # 2021 - 2022 Season on heroku
+# season = Season.find(35) # 2021 - 2022 Season on heroku
+# season = Season.find(1) # local dev environment
 
 countries = Country.all
 
