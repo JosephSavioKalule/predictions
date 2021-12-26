@@ -3,7 +3,7 @@ ruby '2.6.3'
 
 gem 'rails',           '5.2.4.3'
 gem 'bcrypt',          '3.1.12'
-gem 'puma',            '3.12.6'
+gem 'puma',            '4.3.9'
 gem 'sass-rails',      '5.0.6'
 gem 'will_paginate',           '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
@@ -15,8 +15,6 @@ gem 'jquery-rails',    '4.3.1'
 gem 'turbolinks',      '5.0.1'
 gem 'jbuilder',        '2.7.0'
 
-# JavaScript runtime
-# gem "mini_racer",      '0.5.0'
 
 group :development, :test do
   gem 'sqlite3',       '1.3.13'
