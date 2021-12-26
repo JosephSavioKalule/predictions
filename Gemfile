@@ -4,7 +4,7 @@ ruby '2.7.5'
 gem 'rails',           '5.2.6'
 gem 'bcrypt',          '3.1.12'
 gem 'puma',            '4.3.9'
-gem 'sass-rails',      '5.0.6'
+gem 'sassc-rails',     '2.1.2'
 gem 'will_paginate',           '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
 # Add Twitter Bootstrap
