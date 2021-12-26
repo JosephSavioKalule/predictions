@@ -124,22 +124,54 @@
         <% end %>
 
         <% if @upcoming_matches.any? %>
-        <div class="col-lg-6 offset-lg-3">
-          <div class="card">
-            <div class="card-header">
-              Upcoming Matches
-            </div>
-            <ul class="list-group list-group-flush">
-              <% @upcoming_matches.each do |m| %>
-                <li class="list-group-item">
-                <%= link_to league_match_path(m.league, m) do %>
-                <%= "#{m.home_team.name} ? - ? #{m.away_team.name}" %>
-                <% end %>
-                </li>
+          <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+              <div class="card-header">
+                <h4>Upcoming Matches</h4>
+              </div>
+
+              <% if @upcoming_today.any? %>
+                <h5>Today</h5>
+                <ul class="list-group list-group-flush">
+                  <% @upcoming_today.each do |m| %>
+                    <li class="list-group-item">
+                      <%= link_to league_match_path(m.league, m) do %>
+                        <%= "#{m.home_team.name} ? - ? #{m.away_team.name}" %>
+                      <% end %>
+                      at <%= m.match_date_time.strftime('%I:%M %p') %>
+                    </li>
+                  <% end %>
+                </ul>
               <% end %>
-            </ul>
+
+              <% if @upcoming_tomor.any? %>
+                <h5>Tomorrow</h5>
+                <ul class="list-group list-group-flush">
+                  <% @upcoming_tomor.each do |m| %>
+                    <li class="list-group-item">
+                      <%= link_to league_match_path(m.league, m) do %>
+                        <%= "#{m.home_team.name} ? - ? #{m.away_team.name}" %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+
+              <% if @upcoming_later.any? %>
+                <h5>Later</h5>
+                <ul class="list-group list-group-flush">
+                  <% @upcoming_later.each do |m| %>
+                    <li class="list-group-item">
+                      <%= link_to league_match_path(m.league, m) do %>
+                        <%= "#{m.home_team.name} ? - ? #{m.away_team.name}" %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+
+            </div>
           </div>
-        </div>
         <% end %>
 
       </div>
