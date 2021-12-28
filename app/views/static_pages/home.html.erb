@@ -74,7 +74,7 @@
 
             <div class="card-body">
               <h4 class="card-title">Premier League</h4>
-              <p class="card-text">Will Manchester City be able to retain the title this season?</p>
+              <p class="card-text"><%= @leagues[0].country.name %></p>
             </div>
             <div class="card-footer">
               <%= link_to 'Find Out More', league_path(@leagues[0]), class: 'btn btn-primary' %>
@@ -87,7 +87,7 @@
             <img class="card-img-top p-2" height="160px" src="<%= @leagues[1].logo_url %>" alt="La Liga">
             <div class="card-body">
               <h4 class="card-title">La Liga</h4>
-              <p class="card-text">Messi is off to France, but surely this is still a league to watch.</p>
+              <p class="card-text"><%= @leagues[1].country.name %></p>
             </div>
             <div class="card-footer">
               <%= link_to 'Find Out More', league_path(@leagues[1]), class: 'btn btn-primary' %>
@@ -100,7 +100,7 @@
             <img class="card-img-top p-2" height="160px" src="<%= @leagues[2].logo_url %>" alt="Ligue 1">
             <div class="card-body">
               <h4 class="card-title">Ligue 1</h4>
-              <p class="card-text">Kind of a one-man-show here. The strongest team just acquired Lionel Messi!</p>
+              <p class="card-text"><%= @leagues[2].country.name %></p>
             </div>
             <div class="card-footer">
               <%= link_to 'Find Out More', league_path(@leagues[2]), class: 'btn btn-primary' %>
@@ -113,7 +113,7 @@
             <img class="card-img-top p-2" height="160px" src="<%= @leagues[3].logo_url %>" alt="Serie A">
             <div class="card-body">
               <h4 class="card-title">Serie A</h4>
-              <p class="card-text">The best of Italian football</p>
+              <p class="card-text"><%= @leagues[3].country.name %></p>
             </div>
             <div class="card-footer">
               <%= link_to 'Find Out More', league_path(@leagues[3]), class: 'btn btn-primary' %>
