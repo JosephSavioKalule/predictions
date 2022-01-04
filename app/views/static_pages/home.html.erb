@@ -50,7 +50,9 @@
           <div class="card">
 
             <% if @leagues[i].logo_url %>
-            <img class="card-img-top p-2" height="160px" src="<%= @leagues[i].logo_url %>" alt="<%= @leagues[i].name %>">
+              <%= link_to league_path(@leagues[i]) do %>
+                <img class="card-img-top p-2" height="160px" src="<%= @leagues[i].logo_url %>" alt="<%= @leagues[i].name %>">
+              <% end %>
             <% end %>
 
             <div class="card-body">
@@ -68,58 +70,23 @@
 
         <% else %>
           <% if @leagues.count > 3 %>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top p-2" height="160px" src="<%= @leagues[0].logo_url %>" alt="EPL">
+            <% @leagues.each do |league| %>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                  <img class="card-img-top p-2" height="160px" src="<%= league.logo_url %>" alt="EPL">
 
-            <div class="card-body">
-              <h4 class="card-title">Premier League</h4>
-              <p class="card-text"><%= @leagues[0].country.name %></p>
-            </div>
-            <div class="card-footer">
-              <%= link_to 'Find Out More', league_path(@leagues[0]), class: 'btn btn-primary' %>
-            </div>
-          </div>
-        </div>
+                  <div class="card-body">
+                    <h4 class="card-title"><%= league.name %></h4>
+                    <p class="card-text"><%= league.country.name %></p>
+                  </div>
+                  <div class="card-footer">
+                    <%= link_to 'Find Out More', league_path(league), class: 'btn btn-primary' %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top p-2" height="160px" src="<%= @leagues[1].logo_url %>" alt="La Liga">
-            <div class="card-body">
-              <h4 class="card-title">La Liga</h4>
-              <p class="card-text"><%= @leagues[1].country.name %></p>
-            </div>
-            <div class="card-footer">
-              <%= link_to 'Find Out More', league_path(@leagues[1]), class: 'btn btn-primary' %>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top p-2" height="160px" src="<%= @leagues[2].logo_url %>" alt="Ligue 1">
-            <div class="card-body">
-              <h4 class="card-title">Ligue 1</h4>
-              <p class="card-text"><%= @leagues[2].country.name %></p>
-            </div>
-            <div class="card-footer">
-              <%= link_to 'Find Out More', league_path(@leagues[2]), class: 'btn btn-primary' %>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top p-2" height="160px" src="<%= @leagues[3].logo_url %>" alt="Serie A">
-            <div class="card-body">
-              <h4 class="card-title">Serie A</h4>
-              <p class="card-text"><%= @leagues[3].country.name %></p>
-            </div>
-            <div class="card-footer">
-              <%= link_to 'Find Out More', league_path(@leagues[3]), class: 'btn btn-primary' %>
-            </div>
-          </div>
-        </div>
           <% end %>
         <% end %>
 
