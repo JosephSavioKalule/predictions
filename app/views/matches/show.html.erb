@@ -80,7 +80,7 @@
           <% if logged_in? %>
           <p>
             <% if @match.match_date_time > 1.hour.from_now %>
-            <%= link_to 'Predict', new_league_match_prediction_path(@match.league,@match), class:"btn btn-outline-primary" %>
+            <%= link_to 'Predict', new_league_match_prediction_path(@match.league,@match), class:"btn btn-outline-primary mt-2" %>
             <% end %>
           </p>
           <% else %>
