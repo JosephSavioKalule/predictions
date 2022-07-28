@@ -8,7 +8,8 @@ end
 
 if Rails.env.production?
   # seed production data here
-  season = Season.find(35)
+  # season = Season.find(35) 2021-2022 season
+  season = Season.find(36) # 2022-2023 season
 end
 
 # both environments
