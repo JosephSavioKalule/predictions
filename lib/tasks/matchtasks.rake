@@ -132,7 +132,7 @@ task :getfixtures => :environment do
   url = ""
   leagues.each do |league|
     url = URI("https://v3.football.api-sports.io/fixtures?date=" +
-          day2_after_tomo + "&season=2021&league=" + league.to_s)
+          day_after_tomo + "&season=2022&league=" + league.to_s)
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -169,108 +169,6 @@ task :getfixtures => :environment do
 end
 
 
-
-## Leagues ##
-#  39 - Premier League
-# 140 - La Liga
-#  61 - Ligue 1
-# 135 - Serie A
-
-## Teams ##
-# Arsenal 42
-# Brentford 55
-# Burnley 44
-# Brighton 51
-# Chelsea 49
-# Crystal Palace 52
-# Everton 45
-# Southampton 41
-# Leicester 46
-# Wolves 39
-# Manchester United 33
-# Leeds 63
-# Norwich 71
-# Liverpool 40
-# Watford 38
-# Aston Villa 66
-# Newcastle 34
-# West Ham 48
-# Tottenham 47
-# Manchester City 50
-
-
-# [[199, "Wolverhampton Wanderers"], [198, "West Ham United"], [197, "Watford"], [196, "Tottenham Hotspur"], [195, "Southampton"], [194, "Norwich City"], [193, "Newcastle United"], [192, "Manchester United"], [191, "Manchester City"], [190, "Liverpool"], [189, "Leicester City"], [188, "Leeds United"], [187, "Everton"], [186, "Crystal Palace"], [185, "Chelsea"], [184, "Burnley"], [183, "Brighton & Hove Albion"], [182, "Brentford"], [181, "Aston Villa"], [180, "Arsenal"]]
-
-# Alaves 542
-# Athletic Bilbao 531
-# Atletico Madrid 530
-# Barcelona 529
-# Cadiz 724
-# Celta Vigo 538
-# Elche 797
-# Espanyol 540
-# Getafe 546
-# Granada 715
-# Levante 539
-# Mallorca 798
-# Osasuna 727
-# Rayo Vallecano 728
-# Real Betis 543
-# Real Madrid 541
-# Real Sociedad 548
-# Sevilla 536
-# Valencia 532
-# Villarreal 533
-
-# [[219, "Villarreal"], [218, "Valencia"], [217, "Sevilla"], [216, "Real Sociedad"], [215, "Real Madrid"], [214, "Real Betis"], [213, "Rayo Vallecano"], [212, "Osasuna"], [211, "Mallorca"], [210, "Levante"], [209, "Granada"], [208, "Getafe"], [207, "Espanyol"], [206, "Elche"], [205, "Celta Vigo"], [204, "Cádiz"], [203, "Barcelona"], [202, "Atletico Madrid"], [201, "Athletic Bilbao"], [200, "Alavés"]]
-
-# Angers 77
-# Bordeaux 78
-# Brest 106
-# Clermont Foot 99
-# Lens 116
-# Lille 79
-# Lorient 97
-# Lyon 80
-# Marseille 81
-# Metz 112
-# Monaco 91
-# Montpellier 82
-# Nantes 83
-# Nice 84
-# PSG 85
-# Reims 93
-# Rennes 94
-# Saint Etienne 1063
-# Strasbourg 95
-# Troyes 110
-
-# [[239, "Troyes"], [238, "Strasbourg"], [237, "Saint-Etienne"], [236, "Rennes"], [235, "Reims"], [234, "Paris Saint Germain"], [233, "Nice"], [232, "Nantes"], [231, "Montpellier"], [230, "Monaco"], [229, "Metz"], [228, "Marseille"], [227, "Lyon"], [226, "Lorient"], [225, "Lille"], [224, "Lens"], [223, "Clermont"], [222, "Brest"], [221, "Bordeaux"], [220, "Angers"]]
-
-
-# AC Milan 489
-# Atalanta 499
-# Bologna 500
-# Cagliari 490
-# Empoli 511
-# Fiorentina 502
-# Genoa 495
-# Inter 505
-# Juventus 496
-# Lazio 487
-# Napoli 492
-# Roma 497
-# Salernitana 514
-# Sampdoria 498
-# Sassuolo 488
-# Spezia 515
-# Torino 503
-# Udinese 494
-# Venezia 517
-# Verona 504
-
-# [[259, "Venezia"], [258, "Udinese"], [257, "Torino"], [256, "Spezia"], [255, "Sassuolo"], [254, "Sampdoria"], [253, "Salernitana"], [252, "Roma"], [251, "Napoli"], [250, "Lazio"], [249, "Juventus"], [248, "Inter"], [247, "Hellas Verona"], [246, "Genoa"], [245, "Fiorentina"], [244, "Empoli"], [243, "Cagliari"], [242, "Bologna"], [241, "Atalanta"], [240, "AC Milan"]]
-
 task :get_standings => :environment do
   # do something
   #leagues = [39, 140, 61, 135]
@@ -280,7 +178,7 @@ task :get_standings => :environment do
 
     if @nb_recent_matches > 0
       # get fixutres for league
-      url = URI("https://v3.football.api-sports.io/standings?season=2021&league=" + league.to_s)
+      url = URI("https://v3.football.api-sports.io/standings?season=2022&league=" + league.to_s)
 
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
