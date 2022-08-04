@@ -132,7 +132,7 @@ task :getfixtures => :environment do
   url = ""
   leagues.each do |league|
     url = URI("https://v3.football.api-sports.io/fixtures?date=" +
-          day_after_tomo + "&season=2022&league=" + league.to_s)
+          day2_after_tomo + "&season=2022&league=" + league.to_s)
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
